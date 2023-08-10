@@ -1,0 +1,11 @@
+---
+kind: pipeline
+name: default
+type: docker
+
+steps:
+  - name: test
+    image: django:ci
+    commands:
+      - pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+      - pytest -v tests

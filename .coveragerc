@@ -1,0 +1,15 @@
+[run]
+omit =
+    test_*.py
+    manage.py
+    forntend/*
+    */migrations/*
+    */templatetags/*
+    */__init__.py
+    */apps.py
+    */urls.py
+    */admin.py
+    */tests.py
+    config/*
+    tests/*
+

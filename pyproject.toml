@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "elegant-django"
+version = "0.1.0"
+description = 'Modern theme for Django admin interface.'
+authors = ["bopo <ibopo@126.com>"]
+readme = "README.md"
+packages = [{ include = "elegant" }]
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Framework :: Django',
+    'License :: Free for non-commercial use',
+    'Intended Audience :: Developers',
+    'Intended Audience :: System Administrators',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Environment :: Web Environment',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: User Interfaces',
+]
+#url='http://elegant.bopo.me'
+#zip_safe=false
+#include_package_data=true
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

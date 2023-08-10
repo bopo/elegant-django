@@ -1,0 +1,4 @@
+include README.md
+include LICENSE
+recursive-include elegant/static *
+recursive-include elegant/templates *

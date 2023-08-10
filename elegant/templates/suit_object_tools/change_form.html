@@ -1,0 +1,29 @@
+{% extends "admin/change_form.html" %}
+{% load i18n static admin_modify suit_tags admin_urls %}
+{% load url from suit_compat %}
+{# this is an inheritance hack that prevents recursion by absolutely matching only django-suit's provided change_form.html #}
+{# the alternative is to copy the suit source code into this template #}
+{% block object-tools %}
+    {{ block.super }}
+    {% if adminform and adminform.model_admin.suit_object_actions %}
+        <h4 class="italic-title" style="margin-top: 20px">
+            {% if adminform.model_admin.suit_object_actions_title %}
+                {{ adminform.model_admin.suit_object_actions_title }}
+            {% else %}
+                Object Actions
+            {% endif %}
+        </h4>
+        <ul class="box menu-box">
+            {% for action in adminform.model_admin.get_suit_object_actions %}
+                <li>
+                {% url opts|admin_urlname:action.action_string original.pk|admin_urlquote as action_string_url %}
+                    <a href="{% add_preserved_filters action_string_url %}">
+                        <i class="{% if action.icon_class %}{{ action.icon_class }}{% else %}icon-wrench icon-alpha75{% endif %}"></i>
+                        {{ action.name }}
+                    </a>
+                </li>
+
+            {% endfor %}
+        </ul>
+    {% endif %}
+ {% endblock %}
