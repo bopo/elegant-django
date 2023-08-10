@@ -53,7 +53,7 @@ class DateRangeForm(forms.Form):
             return end
 
     class Media:
-        css = {'all': ('suit/css/date_range_filter.css',), }
+        css = {'all': ('elegant/css/date_range_filter.css',), }
 
 
 class DateRangeFilter(admin.FieldListFilter):
