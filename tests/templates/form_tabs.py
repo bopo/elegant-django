@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.utils.translation import ugettext
-from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
-from suit.tests.models import Book, BookAdmin, test_app_label
+from django.utils.translation import gettext
+from tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
+from tests.models import Book, BookAdmin, test_app_label
 
 try:
     from django.core.urlresolvers import reverse
@@ -15,7 +15,7 @@ app_label = test_app_label()
 
 class TabbedBookAdmin(BookAdmin):
     list_filter = ('id', 'name',)
-    suit_form_tabs = (('tab1', 'Tab1'), ('tab2', ugettext('Tab2')))
+    suit_form_tabs = (('tab1', 'Tab1'), ('tab2', gettext('Tab2')))
     suit_form_includes = None
 
 
@@ -38,12 +38,10 @@ class FormTabsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
     def test_template_includes(self):
         suit_form_include = 'admin/date_hierarchy.html'
-        TabbedBookAdmin.suit_form_includes = (
-            (suit_form_include, 'top', 'tab1'),
-        )
+        TabbedBookAdmin.suit_form_includes = ((suit_form_include, 'top', 'tab1'),)
         self.get_response(self.url)
         self.assertTemplateUsed(self.response,
-                                'suit/includes/change_form_includes.html')
+                                'elegant/includes/change_form_includes.html')
         self.assertTemplateUsed(self.response, suit_form_include)
         self.assertContains(self.response,
                             '<div class="suit-include suit-tab suit-tab-tab1">')

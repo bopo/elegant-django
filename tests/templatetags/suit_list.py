@@ -1,10 +1,10 @@
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
-from suit.templatetags.suit_list import paginator_number, paginator_info, \
+from elegant.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
-from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
-from suit.tests.models import Album, Book, test_app_label
+from tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
+from tests.models import Album, Book, test_app_label
 
 try:
     from django.core.urlresolvers import reverse
@@ -50,8 +50,8 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         output = paginator_number(self.changelist, '.')
         self.assertTrue('...' in output)
 
-        output = paginator_number(self.changelist, 0)
-        self.assertTrue('active' in output)
+        output = paginator_number(self.changelist, 1)
+        self.assertTrue('active' in output, msg=output)
 
     def test_paginator_info(self):
         output = paginator_info(self.changelist)

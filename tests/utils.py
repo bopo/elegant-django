@@ -1,8 +1,8 @@
 from django import get_version
-from suit import utils
+from elegant import utils
 from django.test import TestCase
 
-from suit.templatetags.suit_tags import str_to_version
+from elegant.templatetags.suit_tags import str_to_version
 
 
 class UtilsTestCase(TestCase):

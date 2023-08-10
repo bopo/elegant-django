@@ -5,15 +5,15 @@ try:
 except Exception:
     pass
 
-from suit.tests.templatetags.suit_menu import SuitMenuTestCase, \
+from tests.templatetags.suit_menu import SuitMenuTestCase, \
     SuitMenuAdminRootURLTestCase, SuitMenuAdminI18NURLTestCase, \
     SuitMenuAdminCustomURLTestCase
-from suit.tests.templatetags.suit_tags import SuitTagsTestCase
-from suit.tests.templatetags.suit_list import SuitListTestCase
-from suit.tests.templates.form_tabs import FormTabsTestCase
-from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
-from suit.tests.widgets import WidgetsTestCase
-from suit.tests.utils import UtilsTestCase
+from tests.templatetags.suit_tags import SuitTagsTestCase
+from tests.templatetags.suit_list import SuitListTestCase
+from tests.templates.form_tabs import FormTabsTestCase
+from tests.config import ConfigTestCase, ConfigWithModelsTestCase
+from tests.widgets import WidgetsTestCase
+from tests.utils import UtilsTestCase
 
 try:
     # Django 1.7+
@@ -34,5 +34,5 @@ class NoDbTestRunner(DjangoTestSuiteRunner):
         pass
 
 
-class SuitTestRunner(DjangoTestSuiteRunner):
+class ElegantTestRunner(DjangoTestSuiteRunner):
     pass

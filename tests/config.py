@@ -1,10 +1,12 @@
-from django.contrib.admin import ModelAdmin
 from django.conf import settings
-from suit import VERSION
-from suit.config import default_config, get_config
-from suit.templatetags.suit_tags import admin_url
-from suit.tests.models import Book
-from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
+from django.contrib.admin import ModelAdmin
+from django.test import override_settings
+
+from elegant import VERSION
+from elegant.config import default_config, get_config
+from elegant.templatetags.suit_tags import admin_url
+from tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
+from tests.models import Book
 
 
 class ConfigTestCase(UserTestCaseMixin):
@@ -84,9 +86,25 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
         response = self.client.get(admin_url(book))
         content_if_true = ".required:after { content: '*';"
+
         self.assertContains(response, content_if_true)
 
         # Test without confirm
         settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = False
         response = self.client.get(admin_url(book))
+
         self.assertNotContains(response, content_if_true)
+        assert content_if_true not in response.content.decode()
+
+    # @override_settings(SUIT_CONFIG={'SHOW_REQUIRED_ASTERISK': False})
+    # def test_show_required_asterisk_false(self):
+    #     self.login_superuser()
+    #     book = self.create_book()
+    #
+    #     assert (settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] is False)
+    #
+    #     response = self.client.get(admin_url(book))
+    #     required = ".required:after { content: '*';"
+    #
+    #     self.assertNotContains(response, required)
+    #     assert required not in response.content.decode()

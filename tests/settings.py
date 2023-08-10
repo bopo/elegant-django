@@ -8,12 +8,18 @@ DEBUG_PROPAGATE_EXCEPTIONS = True
 ADMINS = ()
 MANAGERS = ADMINS
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
-
 
 TIME_ZONE = 'Europe/Riga'
 SITE_ID = 1
@@ -37,9 +43,10 @@ if django.VERSION < (1, 10):
 else:
     MIDDLEWARE += [
         'django.middleware.security.SecurityMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
     ]
 
-ROOT_URLCONF = 'suit.tests.urls'
+ROOT_URLCONF = 'tests.urls'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -48,8 +55,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
 
-    'suit',
-    'suit.tests.templatetags',
+    'elegant',
+    'tests',
+    'tests.templatetags',
     'django.contrib.admin',
 )
 
@@ -88,4 +96,5 @@ except ImportError:  # Django 1.9+
     ]
 
 SUIT_CONFIG = {}
-TEST_RUNNER = 'suit.tests.SuitTestRunner'
+TEST_RUNNER = 'tests.ElegantTestRunner'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

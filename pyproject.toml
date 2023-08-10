@@ -28,7 +28,32 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
+django = "^4.2.4"
 
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://mirrors.ustc.edu.cn/pypi/web/simple"
+priority = "primary"
+
+
+[[tool.poetry.source]]
+name = "PyPI"
+priority = "explicit"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+pytest-django = "^4.5.2"
+pytest-xdist = "^3.3.1"
+pytest-cov = "^4.1.0"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = ["tests.py", "test.py", "test_*.py", "*_tests.py"]
+addopts = "-p no:warnings"
+log_cli_level = "DEBUG"
+log_cli = 0
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,5 +1,5 @@
-from django.db import models
 from django.contrib import admin
+from django.db import models
 
 
 def test_app_label():
@@ -16,7 +16,7 @@ def test_app_label():
 class Book(models.Model):
     name = models.CharField(max_length=64)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     class Meta:
@@ -26,7 +26,7 @@ class Book(models.Model):
 class Album(models.Model):
     name = models.CharField(max_length=64)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 

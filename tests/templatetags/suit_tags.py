@@ -1,16 +1,20 @@
 import datetime
+
 from django.conf import settings
-from django.test import TestCase
-from django.utils.encoding import python_2_unicode_compatible
-from suit import utils
-from suit.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
-    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
-from django.db import models
 from django.contrib import admin
 from django.contrib.admin.helpers import AdminReadonlyField
+from django.db import models
+from django.test import TestCase
+
+# from django.utils.encoding import python_2_unicode_compatible
+from elegant import utils
+from elegant.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
+    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
+
+django_version = utils.django_major_version()
 
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class Country(models.Model):
     name = models.CharField(max_length=64)
 
@@ -18,7 +22,7 @@ class Country(models.Model):
         return self.name
 
 
-@python_2_unicode_compatible
+# @python_2_unicode_compatible
 class City(models.Model):
     name = models.CharField(max_length=64)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
@@ -29,7 +33,6 @@ class City(models.Model):
 
 class CityAdmin(admin.ModelAdmin):
     readonly_fields = ('country',)
-    pass
 
 
 admin.site.register(Country)
@@ -72,7 +75,6 @@ class SuitTagsTestCase(TestCase):
     def test_admin_url(self):
         country = Country(pk=1, name='USA')
         assert '/country/1' in admin_url(country)
-        pass
 
     def test_field_contents_foreign_linked(self):
         country = Country(pk=1, name='France')
@@ -84,10 +86,15 @@ class SuitTagsTestCase(TestCase):
         request = None
         form = ma.get_form(request, city)
         form.instance = city
-        ro_field = AdminReadonlyField(form, 'country', True, ma)
+        form.fields = hasattr(form, 'fields') and form.fields or '__all__'
 
-        self.assertEqual(country.name,
-                         field_contents_foreign_linked(ro_field))
+        ro_field = AdminReadonlyField(form, 'country', True, ma)
+        self.assertIn(admin_url(country), field_contents_foreign_linked(ro_field))
+
+        if django_version > (4, 0):
+            self.assertEqual(ro_field.contents(), field_contents_foreign_linked(ro_field))
+        else:
+            self.assertEqual(country.name, field_contents_foreign_linked(ro_field))
 
         # Now it should return as link
         ro_field.model_admin.linked_readonly_fields = ('country',)

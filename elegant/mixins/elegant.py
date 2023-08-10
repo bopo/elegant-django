@@ -19,7 +19,7 @@ class SortableModelAdminBase:
     sortable = 'order'
 
     class Media:
-        js = ('suit/js/sortables.js',)
+        js = ('elegant/js/sortables.js',)
 
 
 class SortableListForm(ModelForm):

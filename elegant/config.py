@@ -46,9 +46,9 @@ def get_config(param=None):
         config = default_config()
 
     if param:
-        value = config.get(param)
+        value = config.get(param, None)
 
-        if not value:
+        if value is None:
             value = default_config().get(param)
 
         return value

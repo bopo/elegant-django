@@ -49,7 +49,13 @@ def field_contents_foreign_linked(admin_field):
     displayed = admin_field.contents()
     obj = admin_field.form.instance
 
-    if not hasattr(admin_field.model_admin, 'linked_readonly_fields') or fieldname not in admin_field.model_admin.linked_readonly_fields:
+    if not hasattr(admin_field.model_admin, 'linked_readonly_fields'):
+        return displayed
+
+    if fieldname not in admin_field.model_admin.linked_readonly_fields:
+        return displayed
+
+    if admin_field.is_readonly:
         return displayed
 
     try:
