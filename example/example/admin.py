@@ -1,20 +1,27 @@
 from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
-from django.forms import ModelForm, Select, TextInput, NumberInput
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.forms import ModelForm
+from django.forms import NumberInput
+from django.forms import Select
+from django.forms import TextInput
 from django.shortcuts import redirect
 from django_select2.forms import ModelSelect2Widget
 from suit import apps
-
-from suit.admin import RelatedFieldAdmin, get_related_field
+from suit.admin import get_related_field
+from suit.admin import RelatedFieldAdmin
 from suit.admin_filters import IsNullFieldListFilter
-from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
-from suit.widgets import AutosizedTextarea, EnclosedInput
-from .widgets import Bootstrap4Select
+from suit.sortables import SortableModelAdmin
+from suit.sortables import SortableStackedInline
+from suit.sortables import SortableTabularInline
+from suit.widgets import AutosizedTextarea
+from suit.widgets import EnclosedInput
+
 from .models import *
 from .views import *
+from .widgets import Bootstrap4Select
 
 admin.site.site_header = 'Django Suit'
 
@@ -246,7 +253,7 @@ class ShowcaseAdmin(RelatedFieldAdmin):
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text', 'link_to_country__continent')
     readonly_fields = ('readonly_field', 'link_to_country')
-    radio_fields = {"horizontal_choices": admin.HORIZONTAL,
+    radio_fields = {'horizontal_choices': admin.HORIZONTAL,
                     'vertical_choices': admin.VERTICAL}
     raw_id_fields = ('raw_id_field',)
 
@@ -312,7 +319,7 @@ class ShowcaseAdmin(RelatedFieldAdmin):
         """
         Example how to extend Django ModelAdmin with extra actions and views
         """
-        urls = super(ShowcaseAdmin, self).get_urls()
+        urls = super().get_urls()
         my_urls = [
             url(r'^(\d+)/clickme/$', showcase_custom_view_example, name='demo_showcase_clickme')
         ]

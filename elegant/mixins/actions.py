@@ -1,5 +1,5 @@
-from django import VERSION
 from django import forms
+from django import VERSION
 from django.urls import re_path as url
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _

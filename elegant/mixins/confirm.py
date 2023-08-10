@@ -17,6 +17,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.views.decorators.cache import cache_control
 
+from ..cache import FileCache
 from ..constants import CACHE_KEYS
 from ..constants import CACHE_TIMEOUT
 from ..constants import CONFIRM_ADD
@@ -26,7 +27,6 @@ from ..constants import SAVE
 from ..constants import SAVE_ACTIONS
 from ..constants import SAVE_AND_CONTINUE
 from ..constants import SAVE_AS_NEW
-from ..cache import FileCache
 from ..utils import format_cache_key
 from ..utils import get_admin_change_url
 from ..utils import log

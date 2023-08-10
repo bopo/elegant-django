@@ -47,14 +47,14 @@ class City(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = "Cities (django-select2)"
+        verbose_name_plural = 'Cities (django-select2)'
         unique_together = ('name', 'country')
 
 
 class Showcase(models.Model):
     name = models.CharField(max_length=64)
     help_text = models.CharField(max_length=64,
-                                 help_text="Enter fully qualified name")
+                                 help_text='Enter fully qualified name')
     multiple_in_row = models.CharField(max_length=64,
                                        help_text='Help text for multiple')
     textfield = models.TextField(blank=True,
@@ -74,13 +74,13 @@ class Showcase(models.Model):
     TYPE_CHOICES2 = ((1, 'Hot'), (2, 'Normal'), (3, 'Cold'))
     TYPE_CHOICES3 = ((1, 'Tall'), (2, 'Normal'), (3, 'Short'))
     boolean = models.BooleanField(default=True)
-    boolean_with_help = models.BooleanField(default=False, help_text="Boolean field with help text")
+    boolean_with_help = models.BooleanField(default=False, help_text='Boolean field with help text')
     horizontal_choices = models.SmallIntegerField(
         choices=TYPE_CHOICES, default=1, help_text='Horizontal choices look like this')
     vertical_choices = models.SmallIntegerField(
-        choices=TYPE_CHOICES2, default=2, help_text="Some help on vertical choices")
+        choices=TYPE_CHOICES2, default=2, help_text='Some help on vertical choices')
     choices = models.SmallIntegerField(
-        choices=TYPE_CHOICES3, default=3, help_text="Help text")
+        choices=TYPE_CHOICES3, default=3, help_text='Help text')
 
     country = models.ForeignKey(Country, null=True, blank=True)
     country2 = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_country2_set', verbose_name='Django Select 2')

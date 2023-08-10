@@ -2,8 +2,8 @@ from django import forms
 from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.admin.widgets import AdminTimeWidget
 from django.forms import Select
-from django.forms import TextInput
 from django.forms import Textarea
+from django.forms import TextInput
 from django.templatetags.static import static
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _

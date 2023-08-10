@@ -1,5 +1,6 @@
 from suit.apps import DjangoSuitConfig
-from suit.menu import ParentItem, ChildItem
+from suit.menu import ChildItem
+from suit.menu import ParentItem
 
 
 class SuitConfig(DjangoSuitConfig):
@@ -25,7 +26,7 @@ class SuitConfig(DjangoSuitConfig):
     )
 
     def ready(self):
-        super(SuitConfig, self).ready()
+        super().ready()
 
         # DO NOT COPY FOLLOWING LINE
         # It is only to prevent updating last_login in DB for demo app
