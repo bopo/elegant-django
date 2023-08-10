@@ -48,6 +48,12 @@ pytest-django = "^4.5.2"
 pytest-xdist = "^3.3.1"
 pytest-cov = "^4.1.0"
 
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.settings"
 python_files = ["tests.py", "test.py", "test_*.py", "*_tests.py"]
@@ -55,6 +61,49 @@ addopts = "-p no:warnings"
 log_cli_level = "DEBUG"
 log_cli = 0
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+
+[tool.commitizen]
+tag_format = "v$version"
+annotated_tag = true
+changelog_file = "HISTORY.md"
+changelog_incremental = true
+update_changelog_on_bump = true
+version_provider = "poetry"
+version_files = [
+    "elegant/__init__.py:__version__",
+]
+
+[tool.black]
+line-length = 180
+target-version = ['py39']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "django"
+combine_as_imports = true
+include_trailing_comma = true
+line_length = 120
+
+[tool.djlint]
+profile = "django"
+ignore = "H031"
+
+[tool.ruff]
+line-length = 180
+
+[tool.poe.tasks]
+venv = "poetry install --sync"
+lock = "poetry lock --no-update"
+fake = "poetry run python manage.py runscript fake -v2"
+
+lift = "ENV=prd honcho start"
+mock = "poetry run python manage.py runserver"
+
+test = "poetry run pytest tests"
+lint = "poetry run ruff check ./**/*.py --fix"
+
+docs = "poetry run mkdocs serve -a 0.0.0.0:8000"
+dist = "poetry build -v"
+bkup = "tar zcfv ../server.tar.gz ."
+bump = "cz bump --yes -ch -cc --increment"
+#{MAJOR,MINOR,PATCH}
