@@ -86,6 +86,7 @@ class SuitTagsTestCase(TestCase):
         request = None
         form = ma.get_form(request, city)
         form.instance = city
+        form.fields = '__all__'
 
         ro_field = AdminReadonlyField(form, 'country', True, ma)
         self.assertEqual(country.name, field_contents_foreign_linked(ro_field))
