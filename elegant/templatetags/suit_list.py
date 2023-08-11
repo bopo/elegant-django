@@ -29,9 +29,10 @@ def paginator_number(cl, i):
     :param i:
     :return:
     """
-    logger.warning(f'num_pages => {cl.paginator.num_pages}')
-    logger.warning(f'page_num => {cl.page_num}')
-    logger.warning(f'i => {i}')
+    logger.debug(f'num_pages => {cl.paginator.num_pages}')
+    logger.debug(f'page_num => {cl.page_num}')
+    logger.debug(f'i => {i}')
+
     styles = []
 
     if i == DOT:
@@ -54,10 +55,10 @@ def paginator_number(cl, i):
 def paginator_info(cl):
     paginator = cl.paginator
 
-    logger.warning(f'num_pages => {cl.paginator.num_pages}')
-    logger.warning(f'page_num => {cl.page_num}')
-    logger.warning(f'show_all => {cl.show_all}')
-    logger.warning(f'can_show_all => {cl.can_show_all}')
+    logger.debug(f'num_pages => {cl.paginator.num_pages}')
+    logger.debug(f'page_num => {cl.page_num}')
+    logger.debug(f'show_all => {cl.show_all}')
+    logger.debug(f'can_show_all => {cl.can_show_all}')
 
     # If we show all rows of list (without pagination)
     if cl.show_all and cl.can_show_all:
@@ -75,9 +76,10 @@ def paginator_info(cl):
         if paginator.count < entries_to:
             entries_to = paginator.count
 
-    logger.warning(f'per_page => {paginator.per_page}')
-    logger.warning(f'entries_to => {entries_to}')
-    logger.warning(f'entries_from => {entries_from}')
+    logger.debug(f'per_page => {paginator.per_page}')
+    logger.debug(f'entries_to => {entries_to}')
+    logger.debug(f'entries_from => {entries_from}')
+
     return f'{entries_from} - {entries_to}'
 
 
