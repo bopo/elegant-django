@@ -99,7 +99,7 @@ fake = "poetry run python manage.py runscript fake -v2"
 lift = "ENV=prd honcho start"
 mock = "poetry run python manage.py runserver"
 
-test = "poetry run pytest tests"
+test = "poetry run pytest"
 lint = "poetry run ruff check ./**/*.py --fix"
 
 docs = "poetry run mkdocs serve -a 0.0.0.0:8000"

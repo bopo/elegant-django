@@ -85,7 +85,7 @@ class WidgetsTestCase(TestCase):
         else:
             return '<div class="input-append suit-date"><input type="text" name="sdw" ' \
                    'value="" class="vDateField input-small " size="10" placeholder="Date" />' \
-                   '<span class="add-on"><i class="icon-time"></i></span></div>'
+                   '<span class="add-on"><i class="icon-calendar"></i></span></div>'
 
     def test_SuitDateWidget_output(self):
         sdw = SuitDateWidget(attrs={'placeholder': 'Date'})
@@ -136,7 +136,7 @@ class WidgetsTestCase(TestCase):
         elif django_version > (4, 1):
             return ('<div class="input-append suit-date"><input type="text" name="sdw_0" '
                     'class="vDateField input-small " size="10" placeholder="Date">'
-                    '<span class="add-on"><i class="icon-time"></i></span></div>'
+                    '<span class="add-on"><i class="icon-calendar"></i></span></div>'
                     '<div class="input-append suit-date suit-time">'
                     '<input type="text" name="sdw_1" class="vTimeField input-small " size="8" placeholder="Time">'
                     '<span class="add-on"><i class="icon-time"></i></span></div>')
