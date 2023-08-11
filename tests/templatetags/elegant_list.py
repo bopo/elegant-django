@@ -50,12 +50,13 @@ class ElegantListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
     def test_paginator_number(self):
         output = paginator_number(self.changelist, 100)
-        self.assertTrue('100' in output)
+        print(output)
+        self.assertTrue('100' in output, output)
 
         output = paginator_number(self.changelist, '.')
         self.assertTrue('...' in output)
 
-        output = paginator_number(self.changelist, 1)
+        output = paginator_number(self.changelist, 0 if django_version < (3, 2) else 1)
         self.assertTrue('active' in output, msg=output)
 
         output = paginator_number(self.changelist, 1 if django_version < (3, 2) else 2)

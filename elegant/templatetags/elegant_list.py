@@ -11,8 +11,8 @@ from django.template.loader import get_template
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-from elegant import utils
 from ..compat import tpl_context_class
+from elegant import utils
 
 logger = logging.getLogger(__name__)
 register = template.Library()
@@ -33,14 +33,17 @@ def paginator_number(cl, i):
     if i == DOT:
         return mark_safe('<li class="disabled"><a href="#" onclick="return false;">...</a></li>')
 
-    p = (i, int(i) + 1)[django_version < (3, 2)]
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # < 3.2: 0,1,2,3,4,5,6
+    # >= 3.2: 1,2,3,4,5,6,7
+    p = (i, i + 1)[django_version < (3, 2)]
 
-    if p == cl.page_num:
+    if i == cl.page_num:
         return mark_safe(f'<li class="active"><a href="">{p}</a></li>')
 
-    link = escape(cl.get_query_string({PAGE_VAR: p}))
-    attr = p >= cl.paginator.num_pages and ' class="end"' or ''
-    return mark_safe(f'<li><a href="{link}" {attr}>{p}</a></li> ')
+    link = escape(cl.get_query_string({PAGE_VAR: i}))
+    attr = i >= cl.paginator.num_pages and 'class="end"' or ''
+    return mark_safe(f'<li><a href="{link}" {attr}>{p}</a></li>')
 
 
 @register.simple_tag
