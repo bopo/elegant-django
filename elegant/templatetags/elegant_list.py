@@ -26,9 +26,6 @@ def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
     """
-    logger.debug(f'num_pages => {cl.paginator.num_pages}')
-    logger.debug(f'page_num => {cl.page_num}')
-    logger.debug(f'i => {i}')
 
     if i == DOT:
         return mark_safe('<li class="disabled"><a href="#" onclick="return false;">...</a></li>')
@@ -50,11 +47,6 @@ def paginator_number(cl, i):
 def paginator_info(cl):
     paginator = cl.paginator
 
-    logger.debug(f'num_pages => {cl.paginator.num_pages}')
-    logger.debug(f'page_num => {cl.page_num}')
-    logger.debug(f'show_all => {cl.show_all}')
-    logger.debug(f'can_show_all => {cl.can_show_all}')
-
     # If we show all rows of list (without pagination)
     if cl.show_all and cl.can_show_all:
         entries_from = 1 if paginator.count > 0 else 0
@@ -72,10 +64,6 @@ def paginator_info(cl):
         if paginator.count < entries_to:
             entries_to = paginator.count
 
-    logger.debug(f'per_page => {paginator.per_page}')
-    logger.debug(f'entries_to => {entries_to}')
-    logger.debug(f'entries_from => {entries_from}')
-
     return f'{entries_from} - {entries_to}'
 
 
@@ -86,11 +74,6 @@ def pagination(cl):
     """
     paginator, page_num = cl.paginator, cl.page_num
     pagination_required = (not cl.show_all or not cl.can_show_all) and cl.multi_page
-
-    # print(cl)
-    # print(paginator)
-    # print(page_num)
-    # print(pagination_required)
 
     if not pagination_required:
         page_range = []

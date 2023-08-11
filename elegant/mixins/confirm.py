@@ -228,7 +228,8 @@ class AdminConfirmMixin:
                 if not (isinstance(field, FileField) or isinstance(field, ImageField)):
                     continue
 
-                cached_file = self._file_cache.get(format_cache_key(model=self.model.__name__, field=field.name))  # noqa
+                cached_file = self._file_cache.get(
+                    format_cache_key(model=self.model.__name__, field=field.name))  # noqa
 
                 # If a file was uploaded, the field is omitted from the POST since it's in request.FILES
                 if not query_dict.get(field.name):

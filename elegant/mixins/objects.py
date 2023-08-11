@@ -34,9 +34,8 @@ class BaseDjangoObjectActions(admin.ModelAdmin):
         namespace. Populated by `_get_action_urls`.
     """
 
-    change_actions = []
-    changelist_actions = []
     tools_view_name = None
+    change_actions, changelist_actions = [], []
 
     # EXISTING ADMIN METHODS MODIFIED
     #################################
@@ -47,13 +46,10 @@ class BaseDjangoObjectActions(admin.ModelAdmin):
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
         extra_context = extra_context or {}
-        extra_context.update(
-            {
-                'object_actions': [self._get_tool_dict(x) for x in
-                                   self.get_change_actions(request, object_id, form_url)],
-                'tools_view_name': self.tools_view_name,
-            }
-        )
+        extra_context.update({
+            'object_actions': [self._get_tool_dict(x) for x in self.get_change_actions(request, object_id, form_url)],
+            'tools_view_name': self.tools_view_name,
+        })
         return super().change_view(request, object_id, form_url, extra_context)  # noqa
 
     def changelist_view(self, request, extra_context=None):

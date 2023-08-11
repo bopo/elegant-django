@@ -9,8 +9,8 @@
 
 {% block extrastyle %}
   {{ block.super }}
-  <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "admin/confirm/css/confirmation.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "elegant/css/forms.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "elegant/confirm/css/confirmation.css" %}">
 {% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }}
