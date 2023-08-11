@@ -3,5 +3,5 @@ from django.apps import AppConfig
 
 class ElegantConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
+    verbose_name = 'Elegant UI'
     name = 'elegant'
-    verbose_name = 'elegant'
