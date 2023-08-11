@@ -1,3 +1,4 @@
+import inspect
 import logging
 from copy import copy
 from inspect import getargspec
@@ -89,7 +90,7 @@ def pagination(cl):
 
             # 大于前后预留数和, 则中间加 ...
             if page_num > (on_each_side + on_ends):
-                page_range.extend(range(1, on_each_side + 1))
+                page_range.extend(list(range(1, on_each_side + 1)))
                 page_range.append(DOT)
                 page_range.extend(range(page_num - on_each_side, page_num + 1))
             else:
@@ -218,7 +219,9 @@ def result_row_attrs(context, cl, row_index):
     instance = cl.result_list[row_index]
 
     # Backwards compatibility for suit_row_attributes without request argument
-    args = getargspec(suit_row_attributes)
+    # todo args = getargspec(suit_row_attributes)
+    args = inspect.getfullargspec(suit_row_attributes)
+
     if 'request' in args[0]:
         new_attrs = suit_row_attributes(instance, context['request'])
     else:
@@ -229,8 +232,7 @@ def result_row_attrs(context, cl, row_index):
 
     # Validate
     if not isinstance(new_attrs, dict):
-        raise TypeError(
-            f'"suit_row_attributes" must return dict. Got: {new_attrs.__class__.__name__}: {new_attrs}')
+        raise TypeError(f'"suit_row_attributes" must return dict. Got: {new_attrs.__class__.__name__}: {new_attrs}')
 
     # Merge 'class' attribute
     if 'class' in new_attrs:

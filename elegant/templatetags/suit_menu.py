@@ -60,6 +60,7 @@ def get_admin_site(current_app):
                 return func_closure.cell_contents
     except:
         pass
+
     return admin.site
 
 
