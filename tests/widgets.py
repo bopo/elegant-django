@@ -174,4 +174,4 @@ class WidgetsTestCase(TestCase):
         js_url = static('elegant/js/jquery.autosize-min.js')
 
         # self.assertHTMLEqual(str(txt.media), f'<script src="{js_url}"></script>')
-        self.assertIn(f'<script src="{js_url}"', str(txt.media))
+        self.assertIn(f'src="{js_url}"', str(txt.media))

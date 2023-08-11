@@ -126,15 +126,16 @@ class SuitDateWidget(AdminDateWidget):
         new_attrs = _make_attrs(attrs, defaults, 'vDateField input-small')
         super().__init__(attrs=new_attrs, format=format)
 
-    # def render(self, name, value, attrs=None, renderer=None):
-    #     if django_version < (1, 11):
-    #         output = super().render(name, value, attrs)
-    #     else:
-    #         output = super().render(name, value, attrs, renderer)
-    #
-    #     return mark_safe(
-    #         f'<div class="input-append suit-date">{output}<span class="add-on">'
-    #         f'<i class="icon-calendar"></i></span></div>')
+    if django_version < (4, 2):
+        def render(self, name, value, attrs=None, renderer=None):
+            if django_version < (2, 0):
+                output = super().render(name, value, attrs)
+            else:
+                output = super().render(name, value, attrs, renderer)
+
+            return mark_safe(
+                f'<div class="input-append suit-date">{output}<span class="add-on">'
+                f'<i class="icon-calendar"></i></span></div>')
 
 
 class SuitTimeWidget(AdminTimeWidget):
@@ -144,14 +145,15 @@ class SuitTimeWidget(AdminTimeWidget):
         new_attrs = _make_attrs(attrs, defaults, 'vTimeField input-small')
         super().__init__(attrs=new_attrs, format=format)
 
-    # def render(self, name, value, attrs=None, renderer=None):
-    #     if django_version < (2, 0):
-    #         output = super().render(name, value, attrs)
-    #     else:
-    #         output = super().render(name, value, attrs, renderer)
-    #
-    #     return mark_safe(f'<div class="input-append suit-date suit-time">{output}<span class="add-on">'
-    #                      f'<i class="icon-time"></i></span></div>')
+    if django_version < (4, 2):
+        def render(self, name, value, attrs=None, renderer=None):
+            if django_version < (2, 0):
+                output = super().render(name, value, attrs)
+            else:
+                output = super().render(name, value, attrs, renderer)
+
+            return mark_safe(f'<div class="input-append suit-date suit-time">{output}<span class="add-on">'
+                             f'<i class="icon-time"></i></span></div>')
 
 
 class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
@@ -162,6 +164,16 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
     def __init__(self, attrs=None):
         widgets = [SuitDateWidget, SuitTimeWidget]
         forms.MultiWidget.__init__(self, widgets, attrs)
+
+    # if django_version < (1, 11):
+    #     def format_output(self, rendered_widgets):
+    #         out_tpl = f'<div class="datetime">{rendered_widgets[0]} {rendered_widgets[1]}</div>'
+    #         return mark_safe(out_tpl)
+
+    if django_version < (4, 2):
+        def render(self, name, value, attrs=None, renderer=None):
+            output = super().render(name, value, attrs, renderer)
+            return mark_safe('<div class="datetime">%s</div>' % output)
 
 
 class SuitProgressWidget(forms.Widget):

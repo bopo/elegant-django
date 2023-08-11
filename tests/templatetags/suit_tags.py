@@ -93,6 +93,7 @@ class SuitTagsTestCase(TestCase):
 
         # Now it should return as link
         ro_field.model_admin.linked_readonly_fields = ('country',)
+        print(admin_url(country), field_contents_foreign_linked(ro_field))
         assert admin_url(country) in field_contents_foreign_linked(ro_field)
 
     def test_suit_bc(self):
