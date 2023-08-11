@@ -13,7 +13,7 @@ classifiers = [
     'Intended Audience :: System Administrators',
     'Operating System :: OS Independent',
     'Programming Language :: Python',
-    'Programming Language :: Python :: 2.7',
+    'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
@@ -22,9 +22,6 @@ classifiers = [
     'Topic :: Software Development',
     'Topic :: Software Development :: User Interfaces',
 ]
-#url='http://elegant.bopo.me'
-#zip_safe=false
-#include_package_data=true
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -47,7 +44,6 @@ pytest = "^7.4.0"
 pytest-django = "^4.5.2"
 pytest-xdist = "^3.3.1"
 pytest-cov = "^4.1.0"
-pytz = "^2023.3"
 
 
 [build-system]
@@ -59,8 +55,6 @@ build-backend = "poetry.core.masonry.api"
 DJANGO_SETTINGS_MODULE = "tests.settings"
 python_files = ["tests.py", "test.py", "test_*.py", "*_tests.py"]
 addopts = "-p no:warnings"
-log_cli_level = "DEBUG"
-log_cli = 0
 
 
 [tool.commitizen]
@@ -74,37 +68,36 @@ version_files = [
     "elegant/__init__.py:__version__",
 ]
 
+
 [tool.black]
 line-length = 180
 target-version = ['py39']
 include = '\.pyi?$'
 
+
 [tool.isort]
 profile = "django"
 combine_as_imports = true
 include_trailing_comma = true
-line_length = 120
+line_length = 180
+
 
 [tool.djlint]
 profile = "django"
 ignore = "H031"
 
+
 [tool.ruff]
 line-length = 180
+
 
 [tool.poe.tasks]
 venv = "poetry install --sync"
 lock = "poetry lock --no-update"
-fake = "poetry run python manage.py runscript fake -v2"
-
-lift = "ENV=prd honcho start"
-mock = "poetry run python manage.py runserver"
 
 test = "poetry run pytest"
-lint = "poetry run ruff check ./**/*.py --fix"
+lint = "poetry run ruff check ./elegant/*.py --fix"
 
-docs = "poetry run mkdocs serve -a 0.0.0.0:8000"
 dist = "poetry build -v"
-bkup = "tar zcfv ../server.tar.gz ."
 bump = "cz bump --yes -ch -cc --increment"
 #{MAJOR,MINOR,PATCH}

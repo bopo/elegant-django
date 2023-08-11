@@ -366,22 +366,6 @@ url = "https://mirrors.ustc.edu.cn/pypi/web/simple"
 reference = "mirrors"
 
 [[package]]
-name = "pytz"
-version = "2023.3"
-description = "World timezone definitions, modern and historical"
-optional = false
-python-versions = "*"
-files = [
-    {file = "pytz-2023.3-py2.py3-none-any.whl", hash = "sha256:a151b3abb88eda1d4e34a9814df37de2a80e301e68ba0fd856fb9b46bfbbbffb"},
-    {file = "pytz-2023.3.tar.gz", hash = "sha256:1d8ce29db189191fb55338ee6d0387d82ab59f3d00eac103412d64e0ebd0c588"},
-]
-
-[package.source]
-type = "legacy"
-url = "https://mirrors.ustc.edu.cn/pypi/web/simple"
-reference = "mirrors"
-
-[[package]]
 name = "sqlparse"
 version = "0.4.4"
 description = "A non-validating SQL parser."
@@ -453,4 +437,4 @@ reference = "mirrors"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "8acbbda325a5c6b9369354e51769090dc964af186c473fc8c7df4e6a604c8d5b"
+content-hash = "e0d5690d6e651b7d71d2d3c4f583ed76966aaac0cf0d613c6af78dbacbd8319b"

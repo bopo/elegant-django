@@ -1,4 +1,4 @@
-from .templatetags import *
-from .templates import *
-# from .filter import TestDateRangeForm, TestDateRangeFilter
+# flake8: noqa
 from . import *
+from .templates import *
+from .templatetags import *
