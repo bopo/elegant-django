@@ -1,8 +1,13 @@
 {% load i18n static %}
 
 {% block extrajs %}
-  <script src="{% static 'elegant/otto/js/chart.min.js' %}"></script>
-  <script src="{% static 'elegant/otto/js/utils.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+{#  <script src="{% static 'elegant/js/chart.min.js' %}"></script>#}
+  <script src="{% static 'elegant/js/utils.js' %}"></script>
+{% endblock %}
+
+{% block extrastyle %}
+  <link rel="stylesheet" type="text/css" href="{% static 'elegant/css/dashboard.css' %}">
 {% endblock %}
 
 <h4 class="italic-title">Analytics </h4>
