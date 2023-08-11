@@ -40,7 +40,7 @@ def paginator_number(cl, i):
 
     page_num = cl.page_num
 
-    if django_version < (4, 0):
+    if django_version < (3, 2):
         page_num += 1
 
     i == page_num and styles.append('active')
@@ -67,7 +67,7 @@ def paginator_info(cl):
         logger.warning(f'entries_from paginator.count => {entries_from}')
 
     else:
-        if django_version < (4, 0):
+        if django_version < (3, 2):
             entries_from = ((paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
         else:
             entries_from = ((paginator.per_page * (cl.page_num - 1)) + 1) if paginator.count > 0 else 0
