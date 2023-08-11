@@ -49,6 +49,9 @@ def field_contents_foreign_linked(admin_field):
     displayed = admin_field.contents()
     obj = admin_field.form.instance
 
+    if django_version > (3, 1):
+        return displayed
+
     if not hasattr(admin_field.model_admin, 'linked_readonly_fields'):
         return displayed
 

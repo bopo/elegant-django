@@ -1,5 +1,6 @@
 import datetime
 
+import pytest
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin.helpers import AdminReadonlyField
@@ -76,6 +77,7 @@ class SuitTagsTestCase(TestCase):
         country = Country(pk=1, name='USA')
         assert '/country/1' in admin_url(country)
 
+    @pytest.mark.skipif(django_version > (3, 1), reason='not supported django v3.1+')
     def test_field_contents_foreign_linked(self):
         country = Country(pk=1, name='France')
         city = City(pk=1, name='Paris', country=country)
@@ -93,7 +95,6 @@ class SuitTagsTestCase(TestCase):
 
         # Now it should return as link
         ro_field.model_admin.linked_readonly_fields = ('country',)
-        print(admin_url(country), field_contents_foreign_linked(ro_field))
         assert admin_url(country) in field_contents_foreign_linked(ro_field)
 
     def test_suit_bc(self):
