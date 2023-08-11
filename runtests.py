@@ -29,7 +29,7 @@ if __name__ == '__main__':
         except ValueError:
             pass
         else:
-            pytest_args = ['--cov', '.', '--cov-report', 'xml',] + pytest_args
+            pytest_args = ['--cov', '.', '--cov-report', 'xml', ] + pytest_args
 
         if first_arg.startswith('-'):
             # `runtests.py [flags]`

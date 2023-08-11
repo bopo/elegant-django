@@ -22,10 +22,12 @@ classifiers = [
     'Topic :: Software Development',
     'Topic :: Software Development :: User Interfaces',
 ]
+#zip_safe=false
+#include_package_data=true
 
 [tool.poetry.dependencies]
-python = "^3.8"
-django = "^4.2.4"
+python = "^3.6"
+django = "^3.0.0"
 
 
 [[tool.poetry.source]]

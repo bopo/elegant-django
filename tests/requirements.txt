@@ -1,0 +1,4 @@
+--extra-index-url https://mirrors.ustc.edu.cn/pypi/web/simple
+pytest-django
+pytest-cov
+pytest
