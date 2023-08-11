@@ -2,6 +2,7 @@
 {% load add_preserved_filters from admin_urls %}
 
 {% block object-tools-items %}
+  {% if not is_popup %}
   {% for tool in object_actions %}
     <li class="objectaction-item" data-tool-name="{{ tool.name }}">
       {% url tools_view_name tool=tool.name as action_url %}
@@ -14,5 +15,6 @@
       </a>
     </li>
   {% endfor %}
+  {% endif %}
   {{ block.super }}
 {% endblock %}

@@ -193,6 +193,17 @@
         // Handle change list filter null values
         $('.search-filter').suit_search_filters();
 
+        $('.object-tools>li>a').addClass('btn')
+
+        // reversion
+        $('#content-main>p').addClass('alert alert-info')
+        $('div.module>p').addClass('alert alert-warn')
+
+//        $('div.submit-row>input[type=submit]').addClass('btn btn-info')
+
+        $('a.import_link').prepend('<i class="icon-upload"></i>&nbsp;')
+        $('a.export_link').prepend('<i class="icon-download-alt"></i>&nbsp;')
+
     });
 
 }(Suit.$));
