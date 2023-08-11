@@ -1,7 +1,6 @@
 import inspect
 import logging
 from copy import copy
-from inspect import getargspec
 from urllib.parse import parse_qs
 
 from django import template
@@ -13,49 +12,72 @@ from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 from ..compat import tpl_context_class
+from elegant import utils
 
 logger = logging.getLogger(__name__)
 register = template.Library()
 
 DOT = '.'
+django_version = utils.django_major_version()
 
 
 @register.simple_tag
 def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
+    :param cl:
+    :param i:
+    :return:
     """
-    # logger.warning(f"num_pages => {cl.paginator.num_pages}")
-    # logger.warning(f"page_num => {cl.page_num}")
-    # logger.warning(f"i => {i}")
+    logger.warning(f'num_pages => {cl.paginator.num_pages}')
+    logger.warning(f'page_num => {cl.page_num}')
+    logger.warning(f'i => {i}')
+    styles = []
 
     if i == DOT:
         return mark_safe('<li class="disabled"><a href="#" onclick="return false;">...</a></li>')
 
-    if i == cl.page_num:
-        return mark_safe(f'<li class="active"><a href="">{i}</a></li> ')
+    page_num = cl.page_num
+
+    if django_version < (4, 0):
+        page_num += 1
+
+    i == page_num and styles.append('active')
+    i >= cl.paginator.num_pages and styles.append('end')
 
     links = escape(cl.get_query_string({PAGE_VAR: i}))
-    style = (i == cl.paginator.num_pages and 'class="end"' or '')
 
-    return mark_safe(f'<li><a href="{links}" {style}>{i}</a></li> ')
+    return mark_safe(f'<li><a href="{links}" class="{" ".join(styles)}">{i}</a></li> ')
 
 
 @register.simple_tag
 def paginator_info(cl):
     paginator = cl.paginator
 
+    logger.warning(f'num_pages => {cl.paginator.num_pages}')
+    logger.warning(f'page_num => {cl.page_num}')
+    logger.warning(f'show_all => {cl.show_all}')
+    logger.warning(f'can_show_all => {cl.can_show_all}')
+
     # If we show all rows of list (without pagination)
     if cl.show_all and cl.can_show_all:
         entries_from = 1 if paginator.count > 0 else 0
         entries_to = paginator.count
+        logger.warning(f'entries_from paginator.count => {entries_from}')
+
     else:
-        entries_from = ((paginator.per_page * (cl.page_num - 1)) + 1) if paginator.count > 0 else 0
+        if django_version < (4, 0):
+            entries_from = ((paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
+        else:
+            entries_from = ((paginator.per_page * (cl.page_num - 1)) + 1) if paginator.count > 0 else 0
         entries_to = entries_from - 1 + paginator.per_page
 
         if paginator.count < entries_to:
             entries_to = paginator.count
 
+    logger.warning(f'per_page => {paginator.per_page}')
+    logger.warning(f'entries_to => {entries_to}')
+    logger.warning(f'entries_from => {entries_from}')
     return f'{entries_from} - {entries_to}'
 
 

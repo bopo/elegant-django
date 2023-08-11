@@ -1,5 +1,6 @@
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
+
 from elegant.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
@@ -34,7 +35,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
     book = None
 
     def get_changelist(self):
-        self.get_response(reverse('admin:%s_book_changelist' % app_label))
+        self.get_response(reverse(f'admin:{app_label}_book_changelist'))
         self.changelist = self.response.context_data['cl']
 
     def setUp(self):
@@ -52,6 +53,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
         output = paginator_number(self.changelist, 1)
         self.assertTrue('active' in output, msg=output)
+
+        output = paginator_number(self.changelist, 1)
+        self.assertTrue('end' in output, msg=output)
 
     def test_paginator_info(self):
         output = paginator_info(self.changelist)
