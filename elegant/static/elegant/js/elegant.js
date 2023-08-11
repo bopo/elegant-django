@@ -203,6 +203,7 @@
 
         $('a.import_link').prepend('<i class="icon-upload"></i>&nbsp;')
         $('a.export_link').prepend('<i class="icon-download-alt"></i>&nbsp;')
+        $('#content').css("cssText",'margin-left:0px!important;');
 
     });
 
