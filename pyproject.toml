@@ -58,7 +58,7 @@ DJANGO_SETTINGS_MODULE = "tests.settings"
 python_files = ["tests.py", "test.py", "test_*.py", "*_tests.py"]
 addopts = "-p no:warnings"
 log_cli_level = "DEBUG"
-log_cli = 1
+log_cli = 0
 
 [tool.commitizen]
 tag_format = "v$version"
