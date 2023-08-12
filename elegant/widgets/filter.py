@@ -57,7 +57,7 @@ class DateRangeForm(forms.Form):
 
 
 class DateRangeFilter(admin.FieldListFilter):
-    template = 'admin/date_range_filter.html'
+    template = 'elegant/date_range_filter.html'
     form = None
 
     def expected_parameters(self):

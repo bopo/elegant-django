@@ -207,22 +207,22 @@ if 'cms' in settings.INSTALLED_APPS:
 class SortableAdmin(admin.ModelAdmin):
     class Media:
         js = (
-            'sortable/js/jquery-ui-1.10.3.sortable.min.js',
-            'sortable/js/sortable.changelist.js',
+            'elegant/js/jquery-ui-1.10.3.sortable.min.js',
+            'elegant/js/sortable.changelist.js',
         )
 
 
 class SortableTabularInline(admin.TabularInline):
     class Media:
         js = (
-            'sortable/js/jquery-ui-1.10.3.sortable.min.js',
-            'sortable/js/sortable.tabular.inline.js',
+            'elegant/js/jquery-ui-1.10.3.sortable.min.js',
+            'elegant/js/sortable.tabular.inline.js',
         )
 
 
 class SortableStackedInline(admin.StackedInline):
     class Media:
         js = (
-            'sortable/js/jquery-ui-1.10.3.sortable.min.js',
-            'sortable/js/sortable.stacked.inline.js',
+            'elegant/js/jquery-ui-1.10.3.sortable.min.js',
+            'elegant/js/sortable.stacked.inline.js',
         )
