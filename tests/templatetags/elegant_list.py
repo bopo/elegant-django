@@ -17,10 +17,12 @@ app_label = test_app_label()
 
 
 class ModelAdminMock(object):
-    def suit_row_attributes(self, obj):
+    @staticmethod
+    def elegant_row_attributes(obj):
         return {'class': obj.name, 'data': obj.pk}
 
-    def suit_cell_attributes(self, obj, column):
+    @staticmethod
+    def elegant_cell_attributes(obj, column):
         return {'class': 'col-' + column, 'data': obj.pk}
 
 

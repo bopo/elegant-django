@@ -235,28 +235,28 @@ def result_row_attrs(context, cl, row_index):
     """
     row_index -= 1
     attrs = {'class': 'row1' if row_index % 2 == 0 else 'row2'}
-    suit_row_attributes = getattr(cl.model_admin, 'suit_row_attributes', None)
+    elegant_row_attributes = getattr(cl.model_admin, 'elegant_row_attributes', None)
 
-    if not suit_row_attributes:
+    if not elegant_row_attributes:
         return dict_to_attrs(attrs)
 
     instance = cl.result_list[row_index]
 
-    # Backwards compatibility for suit_row_attributes without request argument
-    # todo args = getargspec(suit_row_attributes)
-    args = inspect.getfullargspec(suit_row_attributes)
+    # Backwards compatibility for elegant_row_attributes without request argument
+    # todo args = getargspec(elegant_row_attributes)
+    args = inspect.getfullargspec(elegant_row_attributes)
 
     if 'request' in args[0]:
-        new_attrs = suit_row_attributes(instance, context['request'])
+        new_attrs = elegant_row_attributes(instance, context['request'])
     else:
-        new_attrs = suit_row_attributes(instance)
+        new_attrs = elegant_row_attributes(instance)
 
     if not new_attrs:
         return dict_to_attrs(attrs)
 
     # Validate
     if not isinstance(new_attrs, dict):
-        raise TypeError(f'"suit_row_attributes" must return dict. Got: {new_attrs.__class__.__name__}: {new_attrs}')
+        raise TypeError(f'"elegant_row_attributes" must return dict. Got: {new_attrs.__class__.__name__}: {new_attrs}')
 
     # Merge 'class' attribute
     if 'class' in new_attrs:
@@ -271,8 +271,8 @@ def cells_handler(results, cl):
     """
     Changes result cell attributes based on object instance and field name
     """
-    suit_cell_attributes = getattr(cl.model_admin, 'suit_cell_attributes', None)
-    if not suit_cell_attributes:
+    elegant_cell_attributes = getattr(cl.model_admin, 'elegant_cell_attributes', None)
+    if not elegant_cell_attributes:
         return results
 
     class_pattern = 'class="'
@@ -283,13 +283,13 @@ def cells_handler(results, cl):
         instance = cl.result_list[row]
         for col, item in enumerate(result):
             field_name = cl.list_display[col]
-            attrs = copy(suit_cell_attributes(instance, field_name))
+            attrs = copy(elegant_cell_attributes(instance, field_name))
             if not attrs:
                 continue
 
             # Validate
             if not isinstance(attrs, dict):
-                raise TypeError(f'"suit_cell_attributes" must return dict. Got: {attrs.__class__.__name__}: {attrs}')
+                raise TypeError(f'"elegant_cell_attributes" must return dict. Got: {attrs.__class__.__name__}: {attrs}')
 
             # Merge 'class' attribute
             if class_pattern in item.split('>')[0] and 'class' in attrs:
