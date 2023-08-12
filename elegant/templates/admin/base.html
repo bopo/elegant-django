@@ -13,7 +13,7 @@
   {% block elegant_jquery %}{% if '1.9'|django_version_gte %}<script src="{% static 'elegant/js/jquery-2.2.4.min.js' %}">{% else %}<script src="{% static 'elegant/js/jquery-1.8.3.min.js' %}">{% endif %}</script>{% endblock %}
   <script type="text/javascript">var Elegant = { $: $.noConflict() }; if (!$) $ = Elegant.$; </script>
   <script src="{% static 'elegant/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'sortable/js/jquery-ui-1.10.3.sortable.min.js' %}"></script>
+    <script src="{% static 'elegant/js/jquery-ui-1.10.3.sortable.min.js' %}"></script>
   {% if 'SHOW_REQUIRED_ASTERISK'|elegant_conf %}
   <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
   {% endif %}

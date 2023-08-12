@@ -50,7 +50,7 @@ class BaseComponent:
 
 
 class Dropdown(BaseComponent):
-    template = 'actions/dropdown.html'
+    template = 'elegant/actions/dropdown.html'
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

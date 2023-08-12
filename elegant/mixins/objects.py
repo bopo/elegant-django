@@ -198,8 +198,8 @@ class BaseDjangoObjectActions(admin.ModelAdmin):
 
 
 class DjangoObjectActions(BaseDjangoObjectActions):
-    change_form_template = 'object_actions/change_form.html'
-    change_list_template = 'object_actions/change_list.html'
+    change_form_template = 'elegant/objects/change_form.html'
+    change_list_template = 'elegant/objects/change_list.html'
 
 
 class BaseActionView(View):

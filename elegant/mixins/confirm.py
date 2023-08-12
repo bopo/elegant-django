@@ -74,8 +74,8 @@ class AdminConfirmMixin:
             or [
                 f'admin/{app_label}/{opts.model_name}/change_confirmation.html',
                 f'admin/{app_label}/change_confirmation.html',
+                'elegant/confirm/change_confirmation.html',
                 'admin/confirm/change_confirmation.html',
-                'confirm/change_confirmation.html',
             ],
             context,
         )
@@ -96,8 +96,8 @@ class AdminConfirmMixin:
             or [
                 f'admin/{app_label}/{opts.model_name}/action_confirmation.html',
                 f'admin/{app_label}/action_confirmation.html',
+                'elegant/confirm/action_confirmation.html',
                 'admin/confirm/action_confirmation.html',
-                'confirm/action_confirmation.html',
             ],
             context,
         )

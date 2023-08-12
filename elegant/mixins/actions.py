@@ -24,10 +24,10 @@ class AdminRowActionsMixin:
     def media(self):
         css = super().media._css  # noqa
         css['all'] = css.get('all', [])
-        css['all'].extend(['actions/css/jquery.dropdown.min.css'])
+        css['all'].extend(['elegant/css/jquery.dropdown.min.css'])
 
         js = super().media._js  # noqa
-        js.extend(['actions/js/jquery.dropdown.min.js', ])
+        js.extend(['elegant/js/jquery.dropdown.min.js', ])
 
         media = forms.Media(css=css, js=js)
         return media
