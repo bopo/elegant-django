@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_modify cms_admin %}
-{% load url from suit_compat %}
+{% load url from elegant_compat %}
 {% block extrahead %}{{ block.super }}
 
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}elegant/css/djangocms.css">
@@ -49,9 +49,9 @@
     runOnLoad(function(){
         parent.setiframeheight($('body').height()+20, {{ plugin.pk }});
 
-    // By DjangoSuit - show iframe only when it loads and hide loading icon
+    // By DjangoElegant - show iframe only when it loads and hide loading icon
     var iframe = parent.document.getElementById('iframe_{{ plugin.pk }}');
-    var icon = parent.document.getElementById('suit-loading-icon');
+    var icon = parent.document.getElementById('elegant-loading-icon');
     iframe.style.visibility = 'visible';
     icon && icon.parentNode.removeChild(icon);
     });

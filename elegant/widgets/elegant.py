@@ -111,7 +111,7 @@ class AutosizedTextarea(Textarea):  # noqa
         else:
             output = super().render(name, value, attrs, renderer)
 
-        output += mark_safe(f"<script type=\"text/javascript\">Suit.$('#id_{name}').autosize();</script>")
+        output += mark_safe(f"<script type=\"text/javascript\">Elegant.$('#id_{name}').autosize();</script>")
 
         return output
 
@@ -119,7 +119,7 @@ class AutosizedTextarea(Textarea):  # noqa
 #
 # Original date widgets with addition html
 #
-class SuitDateWidget(AdminDateWidget):
+class ElegantDateWidget(AdminDateWidget):
 
     def __init__(self, attrs=None, format=None):  # noqaf
         defaults = {'placeholder': _('Date:')[:-1]}
@@ -134,11 +134,11 @@ class SuitDateWidget(AdminDateWidget):
                 output = super().render(name, value, attrs, renderer)
 
             return mark_safe(
-                f'<div class="input-append suit-date">{output}<span class="add-on">'
+                f'<div class="input-append elegant-date">{output}<span class="add-on">'
                 f'<i class="icon-calendar"></i></span></div>')
 
 
-class SuitTimeWidget(AdminTimeWidget):
+class ElegantTimeWidget(AdminTimeWidget):
 
     def __init__(self, attrs=None, format=None):  # noqa
         defaults = {'placeholder': _('Time:')[:-1]}
@@ -152,17 +152,17 @@ class SuitTimeWidget(AdminTimeWidget):
             else:
                 output = super().render(name, value, attrs, renderer)
 
-            return mark_safe(f'<div class="input-append suit-date suit-time">{output}<span class="add-on">'
+            return mark_safe(f'<div class="input-append elegant-date elegant-time">{output}<span class="add-on">'
                              f'<i class="icon-time"></i></span></div>')
 
 
-class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
+class ElegantSplitDateTimeWidget(forms.SplitDateTimeWidget):
     """
     A SplitDateTime Widget that has some admin-specific styling.
     """
 
     def __init__(self, attrs=None):
-        widgets = [SuitDateWidget, SuitTimeWidget]
+        widgets = [ElegantDateWidget, ElegantTimeWidget]
         forms.MultiWidget.__init__(self, widgets, attrs)
 
     # if django_version < (1, 11):
@@ -176,7 +176,7 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
             return mark_safe('<div class="datetime">%s</div>' % output)
 
 
-class SuitProgressWidget(forms.Widget):
+class ElegantProgressWidget(forms.Widget):
     """
     A SplitDateTime Widget that has some admin-specific styling.
     """

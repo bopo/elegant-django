@@ -1,8 +1,8 @@
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
 
-from elegant.templatetags.suit_list import paginator_number, paginator_info, \
-    pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
+from elegant.templatetags.elegant_list import paginator_number, paginator_info, \
+    pagination, elegant_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
 from tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from tests.models import Album, Book, test_app_label
@@ -17,10 +17,12 @@ app_label = test_app_label()
 
 
 class ModelAdminMock(object):
-    def suit_row_attributes(self, obj):
+    @staticmethod
+    def elegant_row_attributes(obj):
         return {'class': obj.name, 'data': obj.pk}
 
-    def suit_cell_attributes(self, obj, column):
+    @staticmethod
+    def elegant_cell_attributes(obj, column):
         return {'class': 'col-' + column, 'data': obj.pk}
 
 
@@ -30,7 +32,7 @@ class ChangeListMock(object):
     result_list = [Book(pk=1, name='beach'), Book(pk=2, name='sky')]
 
 
-class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
+class ElegantListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
     changelist = None
     book = None
 
@@ -81,27 +83,27 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         self.assertEqual(len(pg['page_range']), 2)
         self.assertEqual(pg['pagination_required'], True)
 
-    def test_suit_list_filter_select(self):
+    def test_elegant_list_filter_select(self):
         filter_matches = (self.book.pk, self.book.name)
         self.assertEqual(len(self.changelist.filter_specs), 2)
         for i, spec in enumerate(self.changelist.filter_specs):
-            filter_output = suit_list_filter_select(self.changelist, spec)
+            filter_output = elegant_list_filter_select(self.changelist, spec)
             self.assertTrue('value="%s"' % filter_matches[i] in filter_output)
 
-    def test_suit_list_headers_handler(self):
+    def test_elegant_list_headers_handler(self):
         result_headers = [{'class_attrib': ' class="test"'}, {}]
         result = [{'class_attrib': ' class="test"'},
                   {'class_attrib': ' class="name-column "'}]
         cl = ChangeListMock()
         self.assertEqual(headers_handler(result_headers, cl), result)
 
-    def test_suit_list_dict_to_attrs(self):
+    def test_elegant_list_dict_to_attrs(self):
         attrs = {'class': 'test', 'data': 123}
         result = dict_to_attrs(attrs)
         self.assertTrue('data="123"' in result)
         self.assertTrue('class="test"' in result)
 
-    def test_suit_list_result_row_attrs(self):
+    def test_elegant_list_result_row_attrs(self):
         cl = ChangeListMock()
         context = {'request': 'dummy'}
         result = result_row_attrs(context, cl, 1)
@@ -111,7 +113,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         self.assertTrue('data="2"' in result)
         self.assertTrue('class="row2 sky"' in result)
 
-    def test_suit_list_result_row_attrs_by_response(self):
+    def test_elegant_list_result_row_attrs_by_response(self):
         Book.objects.all().delete()
         for x in range(2):
             book = Book(pk=x, name='sky-%s' % x)
@@ -122,9 +124,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         result = result_row_attrs(context, self.changelist, 1)
         self.assertTrue('data="1"' in result)
         self.assertTrue('data-request="dummy"' in result)
-        self.assertTrue('class="row1 suit_row_attr_class-sky-1"' in result)
+        self.assertTrue('class="row1 elegant_row_attr_class-sky-1"' in result)
 
-    def test_suit_list_result_row_attrs_backwards_compatible(self):
+    def test_elegant_list_result_row_attrs_backwards_compatible(self):
         Album.objects.all().delete()
         album = Album(pk=1, name="foo")
         album.save()
@@ -137,9 +139,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         context = {'request': 'dummy'}
         result = result_row_attrs(context, changelist, 1)
         self.assertTrue('data-album="1"' in result)
-        self.assertTrue('class="row1 suit_row_album_attr_class-foo"' in result)
+        self.assertTrue('class="row1 elegant_row_album_attr_class-foo"' in result)
 
-    def test_suit_list_cells_handler(self):
+    def test_elegant_list_cells_handler(self):
         results = [
             ['<td></td>', '<th class="test"></th>',
              '<td><input class=""></td>'],
@@ -163,7 +165,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
                         or 'class="col-name test"' in result[0][1])
         self.assertTrue('class="col-order"' in result[0][2])
 
-    def test_suit_list_cells_handler_by_response(self):
+    def test_elegant_list_cells_handler_by_response(self):
         Book.objects.all().delete()
         for x in range(2):
             book = Book(pk=x, name='sky-%s' % x)
@@ -174,5 +176,5 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         results = result_list(cl)['results']
         result_cells = cells_handler(results, cl)
         self.assertTrue(
-            'class="suit_cell_attr_class-name-sky-1' in result_cells[0][-1])
+            'class="elegant_cell_attr_class-name-sky-1' in result_cells[0][-1])
         self.assertTrue(' data="1"' in result_cells[0][-1])

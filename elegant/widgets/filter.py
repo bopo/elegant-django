@@ -7,7 +7,7 @@ from django.contrib import admin
 from django.utils import timezone
 from django.utils.translation import pgettext
 
-from .elegant import SuitDateWidget
+from .elegant import ElegantDateWidget
 
 
 class DateRangeForm(forms.Form):
@@ -21,11 +21,11 @@ class DateRangeForm(forms.Form):
         super().__init__(*args, **kwargs)
 
         self.fields[f'{self.field_name}_start'] = forms.DateField(
-            widget=SuitDateWidget(attrs={'placeholder': self.title, 'style': 'width=330px;'}),
+            widget=ElegantDateWidget(attrs={'placeholder': self.title, 'style': 'width=330px;'}),
             label=pgettext('date', '从'), required=False)
 
         self.fields[f'{self.field_name}_end'] = forms.DateField(
-            widget=SuitDateWidget(attrs={'placeholder': self.title}),
+            widget=ElegantDateWidget(attrs={'placeholder': self.title}),
             label=pgettext('date', '至'), required=False)
 
     def start_date(self):

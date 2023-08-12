@@ -12,11 +12,11 @@
     margin-right: 7px;
 }
 
-.date_range_filter, .suit-date {
+.date_range_filter, .elegant-date {
     display: inline-block;
 }
 
-.date_range_filter .suit-date {
+.date_range_filter .elegant-date {
     width: 130px;
 }
 

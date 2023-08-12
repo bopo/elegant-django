@@ -1,6 +1,6 @@
-{% load i18n static suit_list admin_list suit_tags %}
+{% load i18n static elegant_list admin_list elegant_tags %}
 {% if cl.search_fields or cl.has_filters %}
-  {% suit_bc_value 1.5 'pop' 1.6 '_popup' as POPUP_VAR %}
+  {% elegant_bc_value 1.5 'pop' 1.6 '_popup' as POPUP_VAR %}
   <div id="toolbar" class="clearfix">
     <form id="changelist-search" action="" method="get" class="form-inline">
       <div class="search-container">
@@ -14,7 +14,7 @@
               {% if cl.has_filters %}
                 <span class="search-filters">
                 {% for spec in cl.filter_specs %}
-                  {% suit_list_filter_select cl spec %}
+                  {% elegant_list_filter_select cl spec %}
                   &nbsp;
                 {% endfor %}
                 </span>

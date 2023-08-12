@@ -4,41 +4,41 @@ from django.test import override_settings
 
 from elegant import VERSION
 from elegant.config import default_config, get_config
-from elegant.templatetags.suit_tags import admin_url
+from elegant.templatetags.elegant_tags import admin_url
 from tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from tests.models import Book
 
 
 class ConfigTestCase(UserTestCaseMixin):
     def test_default_config(self):
-        default_suit_config = default_config()
-        self.assertEqual(VERSION, default_suit_config['VERSION'])
+        default_elegant_config = default_config()
+        self.assertEqual(VERSION, default_elegant_config['VERSION'])
 
-    def test_suit_config_when_not_defined(self):
+    def test_elegant_config_when_not_defined(self):
         try:
             del settings.SUIT_CONFIG
         except AttributeError:
             pass
 
-        default_suit_config = default_config()
-        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
+        default_elegant_config = default_config()
+        self.assertEqual(get_config('ADMIN_NAME'), default_elegant_config['ADMIN_NAME'])
 
         # Defined as None, should also use fallback
         admin_name = None
         settings.SUIT_CONFIG = {'ADMIN_NAME': admin_name}
-        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
+        self.assertEqual(get_config('ADMIN_NAME'), default_elegant_config['ADMIN_NAME'])
 
-    def test_suit_config_when_defined_but_no_key(self):
+    def test_elegant_config_when_defined_but_no_key(self):
         settings.SUIT_CONFIG = {'RANDOM_KEY': 123}
-        default_suit_config = default_config()
+        default_elegant_config = default_config()
 
-        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
+        self.assertEqual(get_config('ADMIN_NAME'), default_elegant_config['ADMIN_NAME'])
 
         # Defined as empty, should stay empty
         settings.SUIT_CONFIG = {'ADMIN_NAME': ''}
         self.assertEqual(get_config('ADMIN_NAME'), '')
 
-    def test_suit_config_when_defined(self):
+    def test_elegant_config_when_defined(self):
         admin_name = 'Custom Name'
 
         settings.SUIT_CONFIG = {'ADMIN_NAME': admin_name}

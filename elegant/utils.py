@@ -38,7 +38,7 @@ def value_by_version(args):
 def args_to_dict(args):
     """
     Convert template tag args to dict
-    Format {% suit_bc 1.5 'x' 1.6 'y' %} to { '1.5': 'x', '1.6': 'y' }
+    Format {% elegant_bc 1.5 'x' 1.6 'y' %} to { '1.5': 'x', '1.6': 'y' }
     :param args:
     :return:
     """

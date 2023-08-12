@@ -15,8 +15,8 @@ app_label = test_app_label()
 
 class TabbedBookAdmin(BookAdmin):
     list_filter = ('id', 'name',)
-    suit_form_tabs = (('tab1', 'Tab1'), ('tab2', gettext('Tab2')))
-    suit_form_includes = None
+    elegant_form_tabs = (('tab1', 'Tab1'), ('tab2', gettext('Tab2')))
+    elegant_form_includes = None
 
 
 admin.site.unregister(Book)
@@ -31,17 +31,17 @@ class FormTabsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
     def test_tabs_appearance(self):
         for x in range(0, 2):
-            vars = (TabbedBookAdmin.suit_form_tabs[x][0],
-                    TabbedBookAdmin.suit_form_tabs[x][1])
+            vars = (TabbedBookAdmin.elegant_form_tabs[x][0],
+                    TabbedBookAdmin.elegant_form_tabs[x][1])
             self.assertContains(self.response, '<li><a href="#%s">%s</a></li>' %
                                                vars)
 
     def test_template_includes(self):
-        suit_form_include = 'admin/date_hierarchy.html'
-        TabbedBookAdmin.suit_form_includes = ((suit_form_include, 'top', 'tab1'),)
+        elegant_form_include = 'admin/date_hierarchy.html'
+        TabbedBookAdmin.elegant_form_includes = ((elegant_form_include, 'top', 'tab1'),)
         self.get_response(self.url)
         self.assertTemplateUsed(self.response,
                                 'elegant/includes/change_form_includes.html')
-        self.assertTemplateUsed(self.response, suit_form_include)
+        self.assertTemplateUsed(self.response, elegant_form_include)
         self.assertContains(self.response,
-                            '<div class="suit-include suit-tab suit-tab-tab1">')
+                            '<div class="elegant-include elegant-tab elegant-tab-tab1">')
