@@ -5,11 +5,11 @@
 
 {% block extrahead %}
 {{ block.super }}
-<script type="text/javascript" src="{{ STATIC_URL }}cms/js/csrf.js"></script>
+<script type="text/javascript" src="{% static 'cms/js/csrf.js' %}"></script>
 <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
 
 {% if not add %}
-<script type="text/javascript" src="{{ STATIC_URL }}cms/js/change_form.js"></script>
+<script type="text/javascript" src="{% static 'cms/js/change_form.js' %}"></script>
 {% endif %}
 <script type="text/javascript" src="{% static_url %}js/urlify.js"></script>
 
@@ -35,8 +35,8 @@
 </script>
 {% endif %}
 
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}elegant/css/djangocms.css">
-<script type="text/javascript" src="{{ STATIC_URL }}elegant/js/djangocms.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'elegant/css/djangocms.css' %}">
+<script type="text/javascript" src="{% static 'elegant/js/djangocms.js' %}"></script>
 {#{% block jqyery %}{% endblock %}#}
 {% endblock %}
 
