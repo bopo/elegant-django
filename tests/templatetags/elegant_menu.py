@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import Permission
 
-from elegant.templatetags.suit_menu import get_menu
+from elegant.templatetags.elegant_menu import get_menu
 from tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 from tests.models import test_app_label
 

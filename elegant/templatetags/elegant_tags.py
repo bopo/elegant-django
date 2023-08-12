@@ -18,19 +18,19 @@ register = template.Library()
 simple_tag = register.simple_tag
 
 
-@register.filter(name='suit_conf')
-def suit_conf(name):
+@register.filter(name='elegant_conf')
+def elegant_conf(name):
     value = get_config(name)
     return mark_safe(value) if isinstance(value, str) else value
 
 
 @register.tag
-def suit_date(parser, token):
+def elegant_date(parser, token):
     return NowNode(get_config('HEADER_DATE_FORMAT'))
 
 
 @register.tag
-def suit_time(parser, token):
+def elegant_time(parser, token):
     return NowNode(get_config('HEADER_TIME_FORMAT'))
 
 
@@ -86,12 +86,12 @@ def admin_url(obj):
 
 
 @register.simple_tag
-def suit_bc(*args):
+def elegant_bc(*args):
     return utils.value_by_version(args)
 
 
 @simple_tag
-def suit_bc_value(*args):
+def elegant_bc_value(*args):
     return utils.value_by_version(args)
 
 
@@ -104,7 +104,7 @@ def admin_extra_filters(cl):
 
 
 @simple_tag
-def suit_django_version():
+def elegant_django_version():
     return django_version
 
 

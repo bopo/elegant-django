@@ -2,7 +2,7 @@ from django import get_version
 from elegant import utils
 from django.test import TestCase
 
-from elegant.templatetags.suit_tags import str_to_version
+from elegant.templatetags.elegant_tags import str_to_version
 
 
 class UtilsTestCase(TestCase):

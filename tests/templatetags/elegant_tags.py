@@ -9,8 +9,8 @@ from django.test import TestCase
 
 # from django.utils.encoding import python_2_unicode_compatible
 from elegant import utils
-from elegant.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
-    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
+from elegant.templatetags.elegant_tags import elegant_conf, elegant_date, elegant_time, \
+    admin_url, field_contents_foreign_linked, elegant_bc, elegant_bc_value
 
 django_version = utils.django_major_version()
 
@@ -42,36 +42,36 @@ admin.site.register(City, CityAdmin)
 
 class SuitTagsTestCase(TestCase):
     """
-    TemplateTags - suit_tags.py test case
+    TemplateTags - elegant_tags.py test case
     """
 
-    def test_suit_config_string(self):
+    def test_elegant_config_string(self):
         admin_name = 'Custom Name'
         settings.SUIT_CONFIG = {
             'ADMIN_NAME': admin_name
         }
-        value = suit_conf('ADMIN_NAME')
+        value = elegant_conf('ADMIN_NAME')
         self.assertEqual(value, admin_name)
         self.assertTrue('Safe' in value.__class__.__name__)
 
-    def test_suit_config_mark_safe(self):
+    def test_elegant_config_mark_safe(self):
         list = (1, 2, 3)
         settings.SUIT_CONFIG = {
             'SOME_LIST': list
         }
-        value = suit_conf('SOME_LIST')
+        value = elegant_conf('SOME_LIST')
         self.assertEqual(value, list)
         self.assertEqual(value.__class__.__name__, 'tuple')
 
-    def test_suit_date_and_time(self):
+    def test_elegant_date_and_time(self):
         settings.SUIT_CONFIG = {
             'HEADER_DATE_FORMAT': 'Y-m-d',
             'HEADER_TIME_FORMAT': 'H:i',
         }
         self.assertEqual(datetime.datetime.now().strftime('%Y-%m-%d'),
-                         suit_date({}, {}).render({}))
+                         elegant_date({}, {}).render({}))
         self.assertEqual(datetime.datetime.now().strftime('%H:%M'),
-                         suit_time({}, {}).render({}))
+                         elegant_time({}, {}).render({}))
 
     def test_admin_url(self):
         country = Country(pk=1, name='USA')
@@ -97,10 +97,10 @@ class SuitTagsTestCase(TestCase):
         ro_field.model_admin.linked_readonly_fields = ('country',)
         assert admin_url(country) in field_contents_foreign_linked(ro_field)
 
-    def test_suit_bc(self):
+    def test_elegant_bc(self):
         args = [utils.django_major_version(), 'a']
-        self.assertEqual(utils.value_by_version(args), suit_bc(*args))
+        self.assertEqual(utils.value_by_version(args), elegant_bc(*args))
 
-    def test_suit_bc_value(self):
+    def test_elegant_bc_value(self):
         args = [utils.django_major_version(), 'a']
-        self.assertEqual(utils.value_by_version(args), suit_bc_value(*args))
+        self.assertEqual(utils.value_by_version(args), elegant_bc_value(*args))

@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
-{% load i18n static admin_modify suit_tags admin_urls %}
-{% load url from suit_compat %}
+{% load i18n static admin_modify elegant_tags admin_urls %}
+{% load url from elegant_compat %}
 
 {% block extrahead %}{{ block.super }}
   {% url 'admin:jsi18n' as jsi18nurl %}
@@ -14,7 +14,7 @@
 {% block extrajs %}
   {{ block.super }}
 
-  {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
+  {% if 'CONFIRM_UNSAVED_CHANGES'|elegant_conf %}
     <!-- Warn on leaving unsaved form -->
     <script src="{% static 'elegant/js/suit-form-confirm.js' %}"></script>
     <script type="text/javascript">
@@ -22,11 +22,11 @@
     </script>
   {% endif %}
 
-  {% if adminform.model_admin.suit_form_tabs %}
+  {% if adminform.model_admin.elegant_form_tabs %}
     <script type="text/javascript">
     (function ($) {
       $(function () {
-        $('#suit_form_tabs').suit_form_tabs();
+        $('#elegant_form_tabs').elegant_form_tabs();
       });
     }(Suit.$))
     </script>
@@ -35,7 +35,7 @@
   <script>
     (function ($) {
       $(function () {
-        $("#{% firstof opts.model_name opts.module_name %}_form").suit_form_debounce();
+        $("#{% firstof opts.model_name opts.module_name %}_form").elegant_form_debounce();
       });
     }(Suit.$))
   </script>
@@ -136,10 +136,10 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
-        {% block suit_form_tabs %}
-          {% if adminform.model_admin.suit_form_tabs %}
-            <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
-              {% for tab in adminform.model_admin.suit_form_tabs %}
+        {% block elegant_form_tabs %}
+          {% if adminform.model_admin.elegant_form_tabs %}
+            <ul id="elegant_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+              {% for tab in adminform.model_admin.elegant_form_tabs %}
                 <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
             </ul>
           {% endif %}
@@ -154,7 +154,7 @@
             </div>
           {% endif %}
 
-          {# render suit_form_includes at top position #}
+          {# render elegant_form_includes at top position #}
           {% include 'elegant/includes/change_form_includes.html' with position='top' %}
 
           {% block field_sets %}
@@ -165,7 +165,7 @@
 
           {% block after_field_sets %}{% endblock %}
 
-          {# render suit_form_includes at middle position #}
+          {# render elegant_form_includes at middle position #}
           {% include 'elegant/includes/change_form_includes.html' with position='middle' %}
 
           {% block inline_field_sets %}
@@ -178,7 +178,7 @@
 
         {% block after_related_objects %}{% endblock %}
 
-        {# render suit_form_includes at last position #}
+        {# render elegant_form_includes at last position #}
         {% include 'elegant/includes/change_form_includes.html' with position='bottom' %}
 
         {% block admin_change_form_document_ready %}

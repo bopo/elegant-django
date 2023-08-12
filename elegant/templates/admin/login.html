@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
-{% load i18n static suit_tags %}
-{% load url from suit_compat %}
+{% load i18n static elegant_tags %}
+{% load url from elegant_compat %}
 
 {% block extrastyle %}{{ block.super }}
     {#    <link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />#}
@@ -45,7 +45,7 @@
         {% endif %}
 
         <div id="content-main">
-            <h1><i class="icon-lock icon-white"></i> {{ 'ADMIN_NAME'|suit_conf }}</h1>
+            <h1><i class="icon-lock icon-white"></i> {{ 'ADMIN_NAME'|elegant_conf }}</h1>
 
             <form action="{{ app_path }}" method="post" id="login-form"><div class="hide">{% csrf_token %}</div>
                 <div class="form-row control-group{% if not form.this_is_the_login_form.errors and form.username.errors %} error{% endif %}">

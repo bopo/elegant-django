@@ -1,20 +1,20 @@
-{% load static %}{% load suit_tags %}{% load url from suit_compat %}<!DOCTYPE html>
+{% load static %}{% load elegant_tags %}{% load url from elegant_compat %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block title %}{{ title }} | {{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</title>
-  {% block before_suit_styles %}{% endblock %}
+  <title>{% block title %}{{ title }} | {{ 'ADMIN_NAME'|elegant_conf }}{% endblock %}</title>
+  {% block before_elegant_styles %}{% endblock %}
   <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% endblock %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'elegant/bootstrap/css/bootstrap.min.css' %}" media="all"/>
   <link rel="stylesheet" type="text/css" href="{% static 'elegant/css/suit.css' %}" media="all">
   {% block extrastyle %}{% endblock %}
   {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
-  {% block suit_jquery %}{% if '1.9'|django_version_gte %}<script src="{% static 'elegant/js/jquery-2.2.4.min.js' %}">{% else %}<script src="{% static 'elegant/js/jquery-1.8.3.min.js' %}">{% endif %}</script>{% endblock %}
+  {% block elegant_jquery %}{% if '1.9'|django_version_gte %}<script src="{% static 'elegant/js/jquery-2.2.4.min.js' %}">{% else %}<script src="{% static 'elegant/js/jquery-1.8.3.min.js' %}">{% endif %}</script>{% endblock %}
   <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
   <script src="{% static 'elegant/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'sortable/js/jquery-ui-1.10.3.sortable.min.js' %}"></script>
-  {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
+  {% if 'SHOW_REQUIRED_ASTERISK'|elegant_conf %}
   <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
   {% endif %}
   {% block extrahead %}{% endblock %}
@@ -37,7 +37,7 @@
           <!-- Header -->
           <div id="header" class="header">
             <div id="branding">
-              <a href="{% url 'admin:index' %}"><h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1></a>
+              <a href="{% url 'admin:index' %}"><h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|elegant_conf }}{% endblock %}</h1></a>
             </div>
 
             {% block header_time %}
@@ -46,8 +46,8 @@
                 <i class="icon-time"></i>
               </div>
               <div class="header-column">
-                <span class="date"> {% suit_date %}</span><br>
-                <span class="time" id="clock">{% suit_time %}</span>
+                <span class="date"> {% elegant_date %}</span><br>
+                <span class="time" id="clock">{% elegant_time %}</span>
               </div>
             </div>
             {% endblock %}
@@ -147,7 +147,7 @@
           {% if not is_popup %}
             <div id="suit-left" class="suit-column">
               {% block quick-search %}
-                {% with 'SEARCH_URL'|suit_conf as search_url %}
+                {% with 'SEARCH_URL'|elegant_conf as search_url %}
                   {% if search_url %}
                     <form class="form-search nav-quick-search" autocomplete="off" action="{% if '/' in search_url %}{{ search_url }}{% else %}{% url search_url %}{% endif %}" method="GET">
                       <input type="text" name="q" class="input-medium search-query" id="quick-search">
@@ -194,10 +194,10 @@
       </div>
 
       <div class="branding">{% block footer_branding %}
-        {% with 'ADMIN_NAME'|suit_conf as admin_name %}
+        {% with 'ADMIN_NAME'|elegant_conf as admin_name %}
           {{ admin_name }}
           {% if admin_name == 'Django Suit' %}
-            v{{ 'VERSION'|suit_conf }}
+            v{{ 'VERSION'|elegant_conf }}
           {% endif %}
         {% endwith %}
       {% endblock %}</div>
