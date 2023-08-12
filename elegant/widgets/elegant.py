@@ -134,7 +134,7 @@ class SuitDateWidget(AdminDateWidget):
                 output = super().render(name, value, attrs, renderer)
 
             return mark_safe(
-                f'<div class="input-append suit-date">{output}<span class="add-on">'
+                f'<div class="input-append elegant-date">{output}<span class="add-on">'
                 f'<i class="icon-calendar"></i></span></div>')
 
 
@@ -152,7 +152,7 @@ class SuitTimeWidget(AdminTimeWidget):
             else:
                 output = super().render(name, value, attrs, renderer)
 
-            return mark_safe(f'<div class="input-append suit-date suit-time">{output}<span class="add-on">'
+            return mark_safe(f'<div class="input-append elegant-date elegant-time">{output}<span class="add-on">'
                              f'<i class="icon-time"></i></span></div>')
 
 

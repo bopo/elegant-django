@@ -74,16 +74,16 @@ class WidgetsTestCase(TestCase):
 
     def get_SuitDateWidget_output(self):
         if django_version < (1, 11):
-            return '<div class="input-append suit-date"><input class="vDateField ' \
+            return '<div class="input-append elegant-date"><input class="vDateField ' \
                    'input-small " name="sdw" placeholder="Date" ' \
                    'size="10" type="text" /><span class="add-on"><i ' \
                    'class="icon-calendar"></i></span></div>'
         elif django_version < (3, 0):
-            return '<div class="input-append suit-date"><input type="text" name="sdw" ' \
+            return '<div class="input-append elegant-date"><input type="text" name="sdw" ' \
                    'value="" class="vDateField input-small " size="10" placeholder="Date" />' \
                    '<span class="add-on"><i class="icon-calendar"></i></span></div>'
         else:
-            return '<div class="input-append suit-date"><input type="text" name="sdw" ' \
+            return '<div class="input-append elegant-date"><input type="text" name="sdw" ' \
                    'value="" class="vDateField input-small " size="10" placeholder="Date" />' \
                    '<span class="add-on"><i class="icon-calendar"></i></span></div>'
 
@@ -111,12 +111,12 @@ class WidgetsTestCase(TestCase):
 
     def get_SuitTimeWidget_output(self):
         if django_version < (1, 11):
-            return '<div class="input-append suit-date suit-time"><input ' \
+            return '<div class="input-append elegant-date elegant-time"><input ' \
                    'class="vTimeField input-small " name="sdw" ' \
                    'placeholder="Time" size="8" type="text" /><span ' \
                    'class="add-on"><i class="icon-time"></i></span></div>'
         else:
-            return '<div class="input-append suit-date suit-time"><input ' \
+            return '<div class="input-append elegant-date elegant-time"><input ' \
                    'type="text" name="sdw" value="" class="vTimeField input-small " ' \
                    'size="8" placeholder="Time" /><span class="add-on">' \
                    '<i class="icon-time"></i></span></div>'
@@ -134,10 +134,10 @@ class WidgetsTestCase(TestCase):
             two = self.get_SuitTimeWidget_output().replace('sdw', 'sdw_1')
             return '<div class="datetime">%s %s</div>' % (dwo, two)
         elif django_version > (4, 1):
-            return ('<div class="input-append suit-date"><input type="text" name="sdw_0" '
+            return ('<div class="input-append elegant-date"><input type="text" name="sdw_0" '
                     'class="vDateField input-small " size="10" placeholder="Date">'
                     '<span class="add-on"><i class="icon-calendar"></i></span></div>'
-                    '<div class="input-append suit-date suit-time">'
+                    '<div class="input-append elegant-date elegant-time">'
                     '<input type="text" name="sdw_1" class="vTimeField input-small " size="8" placeholder="Time">'
                     '<span class="add-on"><i class="icon-time"></i></span></div>')
         else:

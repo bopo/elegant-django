@@ -16,7 +16,7 @@
 
   {% if 'CONFIRM_UNSAVED_CHANGES'|elegant_conf %}
     <!-- Warn on leaving unsaved form -->
-    <script src="{% static 'elegant/js/suit-form-confirm.js' %}"></script>
+    <script src="{% static 'elegant/js/elegant-form-confirm.js' %}"></script>
     <script type="text/javascript">
       confirmExitIfModified('{% firstof opts.model_name opts.module_name %}_form', '{% trans 'You have unsaved changes' %}.');
     </script>
@@ -138,7 +138,7 @@
         {% csrf_token %}{% block form_top %}{% endblock %}
         {% block elegant_form_tabs %}
           {% if adminform.model_admin.elegant_form_tabs %}
-            <ul id="elegant_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+            <ul id="elegant_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="elegant-tab">
               {% for tab in adminform.model_admin.elegant_form_tabs %}
                 <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
             </ul>

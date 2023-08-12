@@ -80,7 +80,7 @@
             var $inline_sortable = $('<div class="inline-sortable"/>'),
                 icon = '<i class="icon-arrow-up icon-alpha5"></i>',
                 $sortable = $(this),
-                is_stacked = $sortable.hasClass('suit-sortable-stacked');
+                is_stacked = $sortable.hasClass('elegant-sortable-stacked');
 
             var $up_link = create_link(icon, 'up', on_arrow_click, is_stacked),
                 $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked);
@@ -119,7 +119,7 @@
                 }
             } else {
                 var $input = $(input);
-                if ($input.hasClass('suit-sortable')) {
+                if ($input.hasClass('elegant-sortable')) {
                     if (input.defaultValue == input.value && input.value == 0) {
                         return false;
                     }
@@ -161,7 +161,7 @@
 
 
     $(function () {
-        $('.suit-sortable').suit_list_sortable();
+        $('.elegant-sortable').suit_list_sortable();
     });
 
 }(Suit.$));

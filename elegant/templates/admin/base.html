@@ -92,10 +92,10 @@
       {% endblock %}
 
 
-      <div class="suit-columns {{ is_popup|yesno:'one-column,two-columns' }}">
+      <div class="elegant-columns {{ is_popup|yesno:'one-column,two-columns' }}">
 
         {% block content-center %}
-          <div id="suit-center" class="suit-column">
+          <div id="elegant-center" class="elegant-column">
 
             {% if not is_popup %}
               {% block breadcrumbs %}
@@ -145,7 +145,7 @@
 
         {% block content-left %}
           {% if not is_popup %}
-            <div id="suit-left" class="suit-column">
+            <div id="elegant-left" class="elegant-column">
               {% block quick-search %}
                 {% with 'SEARCH_URL'|elegant_conf as search_url %}
                   {% if search_url %}

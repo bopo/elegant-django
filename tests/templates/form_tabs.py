@@ -44,4 +44,4 @@ class FormTabsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                                 'elegant/includes/change_form_includes.html')
         self.assertTemplateUsed(self.response, elegant_form_include)
         self.assertContains(self.response,
-                            '<div class="suit-include suit-tab suit-tab-tab1">')
+                            '<div class="elegant-include elegant-tab elegant-tab-tab1">')

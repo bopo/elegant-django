@@ -29,7 +29,7 @@ class SortableListForm(ModelForm):
 
     class Meta:
         widgets = {
-            'order': NumberInput(attrs={'class': 'hide input-mini suit-sortable'})
+            'order': NumberInput(attrs={'class': 'hide input-mini elegant-sortable'})
         }
 
 
@@ -117,8 +117,8 @@ class SortableStackedInlineBase(SortableModelAdminBase):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == self.sortable:
             kwargs['widget'] = copy.deepcopy(SortableListForm.Meta.widgets['order'])
-            kwargs['widget'].attrs['class'] += ' suit-sortable-stacked'
-            kwargs['widget'].attrs['rowclass'] = ' suit-sortable-stacked-row'
+            kwargs['widget'].attrs['class'] += ' elegant-sortable-stacked'
+            kwargs['widget'].attrs['rowclass'] = ' elegant-sortable-stacked-row'
 
         return super().formfield_for_dbfield(db_field, **kwargs)  # noqa
 
