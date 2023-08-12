@@ -40,7 +40,7 @@ admin.site.register(Country)
 admin.site.register(City, CityAdmin)
 
 
-class SuitTagsTestCase(TestCase):
+class ElegantTagsTestCase(TestCase):
     """
     TemplateTags - elegant_tags.py test case
     """

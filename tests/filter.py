@@ -101,7 +101,7 @@ class TestDateRangeFilter(TestCase):
         self.assertEqual(queryset.filter.call_count, 1)
 
 
-class TestSuitList(TestCase):
+class TestElegantList(TestCase):
     def setUp(self):
         pass
 

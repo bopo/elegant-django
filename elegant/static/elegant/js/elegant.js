@@ -1,7 +1,7 @@
 (function ($) {
 
     // Register callbacks to perform after inline has been added
-    Suit.after_inline = function () {
+    Elegant.after_inline = function () {
         var functions = {};
         var register = function (fn_name, fn_callback) {
             functions[fn_name] = fn_callback;
@@ -20,7 +20,7 @@
     }();
 
     // Backwards compatiblity
-    SuitAfterInline = Suit.after_inline;
+    ElegantAfterInline = Elegant.after_inline;
 
     /**
      * Fixed submit buttons.
@@ -206,4 +206,4 @@
 
     });
 
-}(Suit.$));
+}(Elegant.$));

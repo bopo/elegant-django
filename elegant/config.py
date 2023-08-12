@@ -9,7 +9,7 @@ def default_config():
         'VERSION': VERSION,
 
         # configurable
-        'ADMIN_NAME': 'Django Suit',
+        'ADMIN_NAME': 'Django Elegant',
         'HEADER_DATE_FORMAT': 'l, jS F Y',
         'HEADER_TIME_FORMAT': 'H:i',
 

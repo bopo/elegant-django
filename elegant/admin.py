@@ -9,7 +9,7 @@ from django.forms import ModelForm
 
 from .compat import ct_admin
 from .widgets import NumberInput
-from .widgets import SuitSplitDateTimeWidget
+from .widgets import ElegantSplitDateTimeWidget
 
 
 class SortableModelAdminBase:
@@ -197,8 +197,8 @@ if 'cms' in settings.INSTALLED_APPS:
         from cms.admin.forms import PageForm  # noqa
 
         PageForm.Meta.widgets = {
-            'publication_date': SuitSplitDateTimeWidget,
-            'publication_end_date': SuitSplitDateTimeWidget,
+            'publication_date': ElegantSplitDateTimeWidget,
+            'publication_end_date': ElegantSplitDateTimeWidget,
         }
     except ImportError:
         pass

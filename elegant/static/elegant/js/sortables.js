@@ -154,7 +154,7 @@
             });
         }
 
-        Suit.after_inline.register('bind_sortable_arrows', function (prefix, row) {
+        Elegant.after_inline.register('bind_sortable_arrows', function (prefix, row) {
             $(row).find('.sortable').click(on_arrow_click);
         })
     };
@@ -164,4 +164,4 @@
         $('.elegant-sortable').elegant_list_sortable();
     });
 
-}(Suit.$));
+}(Elegant.$));

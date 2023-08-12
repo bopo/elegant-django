@@ -117,7 +117,7 @@ class Menu:
     def make_menu(self, config):
         menu = []
         if not isinstance(config, (tuple, list)):
-            raise TypeError(f'Django Suit MENU config parameter must be tuple or list. Got {repr(config)}')
+            raise TypeError(f'Django Elegant MENU config parameter must be tuple or list. Got {repr(config)}')
         for app in config:
             app = self.make_app(app)
             if app:
@@ -484,7 +484,7 @@ class Menu:
 
         if 'test' not in sys.argv:
             warnings.warn(
-                'Django Suit "MENU_ORDER" setting is deprecated. Use new "MENU"'
+                'Django Elegant "MENU_ORDER" setting is deprecated. Use new "MENU"'
                 ' key instead, see Documentation for new syntax.',
                 DeprecationWarning)
 

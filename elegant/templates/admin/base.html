@@ -11,7 +11,7 @@
   {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   {% block elegant_jquery %}{% if '1.9'|django_version_gte %}<script src="{% static 'elegant/js/jquery-2.2.4.min.js' %}">{% else %}<script src="{% static 'elegant/js/jquery-1.8.3.min.js' %}">{% endif %}</script>{% endblock %}
-  <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
+  <script type="text/javascript">var Elegant = { $: $.noConflict() }; if (!$) $ = Elegant.$; </script>
   <script src="{% static 'elegant/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'sortable/js/jquery-ui-1.10.3.sortable.min.js' %}"></script>
   {% if 'SHOW_REQUIRED_ASTERISK'|elegant_conf %}
@@ -189,14 +189,14 @@
 
       <div class="copyright">
         {% block copyright %}
-          Copyright &copy; 2013-{% now "Y" %} DjangoSuit.com<br>Developed by <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+          Copyright &copy; 2013-{% now "Y" %} DjangoElegant.com<br>Developed by <a href="http://djangosuit.com" target="_blank">DjangoElegant.com</a>
         {% endblock %}
       </div>
 
       <div class="branding">{% block footer_branding %}
         {% with 'ADMIN_NAME'|elegant_conf as admin_name %}
           {{ admin_name }}
-          {% if admin_name == 'Django Suit' %}
+          {% if admin_name == 'Django Elegant' %}
             v{{ 'VERSION'|elegant_conf }}
           {% endif %}
         {% endwith %}

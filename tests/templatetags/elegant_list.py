@@ -32,7 +32,7 @@ class ChangeListMock(object):
     result_list = [Book(pk=1, name='beach'), Book(pk=2, name='sky')]
 
 
-class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
+class ElegantListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
     changelist = None
     book = None
 

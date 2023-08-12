@@ -247,7 +247,7 @@
             })
     })
 
-}(Suit.$);
+}(Elegant.$);
 
 /* ============================================================
  * bootstrap-dropdown.js v2.3.0
@@ -417,7 +417,7 @@
         .on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
         .on('keydown.dropdown.data-api', toggle + ', [role=menu]', Dropdown.prototype.keydown)
 
-}(Suit.$);
+}(Elegant.$);
 
 /* ===========================================================
  * bootstrap-tooltip.js v2.3.0
@@ -771,7 +771,7 @@
         return this
     }
 
-}(Suit.$);
+}(Elegant.$);
 
 /* ===========================================================
  * bootstrap-popover.js v2.3.0
@@ -889,7 +889,7 @@
         return this
     }
 
-}(Suit.$);
+}(Elegant.$);
 
 /* ==========================================================
  * bootstrap-alert.js v2.3.0
@@ -989,7 +989,7 @@
 
     $(document).on('click.alert.data-api', dismiss, Alert.prototype.close)
 
-}(Suit.$);
+}(Elegant.$);
 /* ============================================================
  * bootstrap-button.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#buttons
@@ -1094,7 +1094,7 @@
         $btn.button('toggle')
     })
 
-}(Suit.$);
+}(Elegant.$);
 /* =============================================================
  * bootstrap-collapse.js v2.3.0
  * http://twitter.github.com/bootstrap/javascript.html#collapse
@@ -1261,4 +1261,4 @@
         $(target).collapse(option)
     })
 
-}(Suit.$);
+}(Elegant.$);

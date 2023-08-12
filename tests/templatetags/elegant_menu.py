@@ -23,7 +23,7 @@ except (ImportError, ModuleNotFoundError):
 app_label = test_app_label()
 
 
-class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
+class ElegantMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def setUp(self):
         self.setUpConfig()
         self.login_superuser()
@@ -399,13 +399,13 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertContains(self.response, '<li class="active">')
 
 
-class SuitMenuAdminRootURLTestCase(SuitMenuTestCase):
+class ElegantMenuAdminRootURLTestCase(ElegantMenuTestCase):
     urls = 'tests.urls.admin_at_root'
 
 
-class SuitMenuAdminI18NURLTestCase(SuitMenuTestCase):
+class ElegantMenuAdminI18NURLTestCase(ElegantMenuTestCase):
     urls = 'tests.urls.admin_i18n'
 
 
-class SuitMenuAdminCustomURLTestCase(SuitMenuTestCase):
+class ElegantMenuAdminCustomURLTestCase(ElegantMenuTestCase):
     urls = 'tests.urls.admin_custom'

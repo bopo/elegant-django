@@ -1,4 +1,4 @@
-// Wrap in Suit jQuery
+// Wrap in Elegant jQuery
 (function ($) {
     /*
         jQuery Autosize v1.16.5
@@ -47,11 +47,11 @@
     })(window.jQuery || window.Zepto);
 
     /*
-        Custom hook for Django Suit inlines
+        Custom hook for Django Elegant inlines
     */
     $(function () {
-        Suit.after_inline.register('autosize_textarea', function (inline_prefix, row) {
+        Elegant.after_inline.register('autosize_textarea', function (inline_prefix, row) {
             $(row).find('.autosize').autosize()
         });
     });
-}(Suit.$));
+}(Elegant.$));
