@@ -1,15 +1,16 @@
 import django
+
 try:
     # Django 1.9+
     django.setup()
 except Exception:
     pass
 
-from tests.templatetags.suit_menu import SuitMenuTestCase, \
+from tests.templatetags.elegant_menu import SuitMenuTestCase, \
     SuitMenuAdminRootURLTestCase, SuitMenuAdminI18NURLTestCase, \
     SuitMenuAdminCustomURLTestCase
-from tests.templatetags.suit_tags import SuitTagsTestCase
-from tests.templatetags.suit_list import SuitListTestCase
+from tests.templatetags.elegant_tags import SuitTagsTestCase
+from tests.templatetags.elegant_list import SuitListTestCase
 from tests.templates.form_tabs import FormTabsTestCase
 from tests.config import ConfigTestCase, ConfigWithModelsTestCase
 from tests.widgets import WidgetsTestCase
