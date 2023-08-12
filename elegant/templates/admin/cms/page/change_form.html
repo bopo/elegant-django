@@ -119,7 +119,7 @@
     <div style="display: none;"><input type="hidden" name="language" value="{{language}}" id="id_language"/></div>
 
     {% if show_language_tabs %}
-      <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="tab-content">
+      <ul class="nav nav-tabs nav-tabs-elegant" data-tab-prefix="tab-content">
         {% for lang_code, lang_name in language_tabs %}
         <li class="{% if lang_code == language %}active{% else %}{% if not lang_code in filled_languages %} notfilled{% endif %}{% endif %}"><a href="javascript:;" onclick="trigger_lang_button(this,'./?language={{lang_code}}');">{{lang_name}}</a></li>
         {% endfor %}

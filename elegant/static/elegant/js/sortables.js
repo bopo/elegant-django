@@ -2,7 +2,7 @@
  * List sortables
  */
 (function ($) {
-    $.fn.suit_list_sortable = function () {
+    $.fn.elegant_list_sortable = function () {
         var $inputs = $(this);
         if (!$inputs.length)
             return;
@@ -161,7 +161,7 @@
 
 
     $(function () {
-        $('.elegant-sortable').suit_list_sortable();
+        $('.elegant-sortable').elegant_list_sortable();
     });
 
 }(Suit.$));

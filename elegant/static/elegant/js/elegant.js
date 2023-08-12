@@ -25,7 +25,7 @@
     /**
      * Fixed submit buttons.
      */
-    $.fn.suit_fixed = function () {
+    $.fn.elegant_fixed = function () {
         $(this).each(function () {
             // extra_offset: 70 (60 Footer height + 10 top offset)
             var $fixed_item = $(this), pos = $fixed_item.offset(), extra_offset = 70;
@@ -51,7 +51,7 @@
     /**
      * Search filters - submit only changed fields
      */
-    $.fn.suit_search_filters = function () {
+    $.fn.elegant_search_filters = function () {
         $(this).change(function () {
             var $field = $(this);
             var $option = $field.find('option:selected');
@@ -80,7 +80,7 @@
     /**
      * Linked select - shows link to related item after Select
      */
-    $.fn.suit_linked_select = function () {
+    $.fn.elegant_linked_select = function () {
 
         var get_link_name = function ($select) {
             var text = $select.find('option:selected').text();
@@ -117,7 +117,7 @@
     /**
      * Content tabs
      */
-    $.fn.suit_form_tabs = function () {
+    $.fn.elegant_form_tabs = function () {
 
         var $tabs = $(this);
         var tab_prefix = $tabs.data('tab-prefix');
@@ -162,7 +162,7 @@
     /**
      * Avoids double-submit issues in the change_form.
      */
-    $.fn.suit_form_debounce = function () {
+    $.fn.elegant_form_debounce = function () {
         var $form = $(this),
             $saveButtons = $form.find('.submit-row button'),
             submitting = false;
@@ -185,13 +185,13 @@
     $(function () {
 
         // Fixed submit buttons
-        $('.inner-right-column').suit_fixed();
+        $('.inner-right-column').elegant_fixed();
 
         // Show link to related item after Select
-        $('.linked-select').suit_linked_select();
+        $('.linked-select').elegant_linked_select();
 
         // Handle change list filter null values
-        $('.search-filter').suit_search_filters();
+        $('.search-filter').elegant_search_filters();
 
         $('.object-tools>li>a').addClass('btn')
 
