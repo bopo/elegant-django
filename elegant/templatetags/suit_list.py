@@ -140,7 +140,7 @@ def pagination(cl):
 
 
 @register.simple_tag
-def suit_list_filter_select(cl, spec):
+def elegant_list_filter_select(cl, spec):
     tpl = get_template(spec.template)
     choices = list(spec.choices(cl))
     field_key = spec.field_path if hasattr(spec, 'field_path') else spec.parameter_name

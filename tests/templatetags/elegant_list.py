@@ -2,7 +2,7 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
 
 from elegant.templatetags.suit_list import paginator_number, paginator_info, \
-    pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
+    pagination, elegant_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
 from tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from tests.models import Album, Book, test_app_label
@@ -83,11 +83,11 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         self.assertEqual(len(pg['page_range']), 2)
         self.assertEqual(pg['pagination_required'], True)
 
-    def test_suit_list_filter_select(self):
+    def test_elegant_list_filter_select(self):
         filter_matches = (self.book.pk, self.book.name)
         self.assertEqual(len(self.changelist.filter_specs), 2)
         for i, spec in enumerate(self.changelist.filter_specs):
-            filter_output = suit_list_filter_select(self.changelist, spec)
+            filter_output = elegant_list_filter_select(self.changelist, spec)
             self.assertTrue('value="%s"' % filter_matches[i] in filter_output)
 
     def test_suit_list_headers_handler(self):
