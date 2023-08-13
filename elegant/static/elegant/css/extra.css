@@ -1,0 +1,9 @@
+
+.filebrowser {
+  #container {
+    .breadcrumbs + #content,
+    .breadcrumbs + .messagelist + #content {
+      margin-left: 0 !important;
+    }
+  }
+}

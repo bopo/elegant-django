@@ -11,8 +11,8 @@ from django.template.loader import get_template
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-from ..compat import tpl_context_class
 from elegant import utils
+from ..compat import tpl_context_class
 
 logger = logging.getLogger(__name__)
 register = template.Library()
@@ -25,30 +25,22 @@ django_version = utils.django_major_version()
 def paginator_number(cl, i):
     """
     Generates an individual page index link in a paginated list.
-    :param cl:
-    :param i:
-    :return:
     """
     logger.debug(f'num_pages => {cl.paginator.num_pages}')
     logger.debug(f'page_num => {cl.page_num}')
     logger.debug(f'i => {i}')
 
-    styles = []
-
     if i == DOT:
         return mark_safe('<li class="disabled"><a href="#" onclick="return false;">...</a></li>')
 
-    page_num = cl.page_num
+    p = (i, int(i) + 1)[django_version < (3, 2)]
 
-    if django_version < (3, 2):
-        page_num += 1
+    if p == cl.page_num:
+        return mark_safe(f'<li class="active"><a href="">{p}</a></li>')
 
-    i == page_num and styles.append('active')
-    i >= cl.paginator.num_pages and styles.append('end')
-
-    links = escape(cl.get_query_string({PAGE_VAR: i}))
-
-    return mark_safe(f'<li><a href="{links}" class="{" ".join(styles)}">{i}</a></li> ')
+    link = escape(cl.get_query_string({PAGE_VAR: p}))
+    attr = p >= cl.paginator.num_pages and ' class="end"' or ''
+    return mark_safe(f'<li><a href="{link}" {attr}>{p}</a></li> ')
 
 
 @register.simple_tag
@@ -64,13 +56,14 @@ def paginator_info(cl):
     if cl.show_all and cl.can_show_all:
         entries_from = 1 if paginator.count > 0 else 0
         entries_to = paginator.count
-        logger.warning(f'entries_from paginator.count => {entries_from}')
+        print(f'entries_from paginator.count => {entries_from}')
 
     else:
         if django_version < (3, 2):
             entries_from = ((paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
         else:
             entries_from = ((paginator.per_page * (cl.page_num - 1)) + 1) if paginator.count > 0 else 0
+
         entries_to = entries_from - 1 + paginator.per_page
 
         if paginator.count < entries_to:
@@ -91,10 +84,10 @@ def pagination(cl):
     paginator, page_num = cl.paginator, cl.page_num
     pagination_required = (not cl.show_all or not cl.can_show_all) and cl.multi_page
 
-    # logger.warning(cl)
-    # logger.warning(paginator)
-    # logger.warning(page_num)
-    # logger.warning(pagination_required)
+    # print(cl)
+    # print(paginator)
+    # print(page_num)
+    # print(pagination_required)
 
     if not pagination_required:
         page_range = []

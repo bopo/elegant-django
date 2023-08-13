@@ -6,7 +6,7 @@
  * @license: MIT license: http://opensource.org/licenses/MIT
  *
  */
-(function(jQuery) {
+(function (jQuery) {
     if (jQuery) (function ($) {
 
         $.extend($.fn, {
@@ -94,7 +94,7 @@
                 jqDropdown
                     .hide()
                     .removeData('jq-dropdown-trigger')
-                    .trigger('hide', { jqDropdown: jqDropdown });
+                    .trigger('hide', {jqDropdown: jqDropdown});
             });
 
             // Remove all jq-dropdown-open classes

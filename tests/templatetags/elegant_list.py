@@ -1,6 +1,7 @@
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
 
+from elegant import utils
 from elegant.templatetags.elegant_list import paginator_number, paginator_info, \
     pagination, elegant_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
@@ -14,6 +15,7 @@ except ImportError:
     from django.urls import reverse
 
 app_label = test_app_label()
+django_version = utils.django_major_version()
 
 
 class ModelAdminMock(object):
@@ -56,7 +58,7 @@ class ElegantListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         output = paginator_number(self.changelist, 1)
         self.assertTrue('active' in output, msg=output)
 
-        output = paginator_number(self.changelist, 1)
+        output = paginator_number(self.changelist, 1 if django_version < (3, 2) else 2)
         self.assertTrue('end' in output, msg=output)
 
     def test_paginator_info(self):
