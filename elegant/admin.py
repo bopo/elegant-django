@@ -8,8 +8,8 @@ from django.db import models
 from django.forms import ModelForm
 
 from .compat import ct_admin
-from .widgets import NumberInput
 from .widgets import ElegantSplitDateTimeWidget
+from .widgets import NumberInput
 
 
 class SortableModelAdminBase:
