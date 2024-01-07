@@ -124,7 +124,7 @@ prepare: ## 准备开发环境
 remove: ## 清理开发环境
 	@poetry env remove `poetry env list | grep '(Activated)' | cut -d ' ' -f1 | sed 's/-py/ /g' | awk '{print $$NF}'`
 
-release: dist ## 项目发布打包
+publish: clean ## 项目发布打包
 	poetry publish --build
 
 # DO NOT DELETE
