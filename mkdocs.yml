@@ -1,0 +1,4 @@
+site_name: Elegant Django
+
+theme:
+  name: material

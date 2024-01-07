@@ -5,7 +5,7 @@
 `Elegant Django`是`Django`管理界面的替代主题 / 皮肤 / 扩展。
 
 [![image](https://badge.fury.io/py/elegant-django.svg)](http://badge.fury.io/py/elegant-django)
-[![Documentation Status](https://readthedocs.org/projects/elegant-django/badge/?version=latest)](https://elegant-django.readthedocs.io/zh/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/elegant-django/badge/?version=latest)](https://elegant-django.readthedocs.io/)
 
 如果喜欢本项目可以在右上角给颗⭐！你的支持是我最大的动力😎！
 
@@ -26,6 +26,3 @@
 
 > 新手建议使用 `pip install elegant-django` 安装
 
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/bopo/elegant-django.svg)](https://starchart.cc/bopo/elegant-django)

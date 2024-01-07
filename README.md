@@ -5,7 +5,7 @@
 `Elegant Django`是`Django`管理界面的替代主题 / 皮肤 / 扩展。
 
 [![image](https://badge.fury.io/py/elegant-django.svg)](http://badge.fury.io/py/elegant-django)
-[![Documentation Status](https://readthedocs.org/projects/elegant-django/badge/?version=latest)](https://elegant-django.readthedocs.io/zh/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/elegant-django/badge/?version=latest)](https://elegant-django.readthedocs.io/?badge=latest)
 
 如果喜欢本项目可以在右上角给颗⭐！你的支持是我最大的动力😎！
 
