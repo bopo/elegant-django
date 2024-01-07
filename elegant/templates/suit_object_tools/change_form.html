@@ -2,7 +2,7 @@
 {% load i18n static admin_modify elegant_tags admin_urls %}
 {% load url from elegant_compat %}
 {# this is an inheritance hack that prevents recursion by absolutely matching only django-elegant's provided change_form.html #}
-{# the alternative is to copy the suit source code into this template #}
+{# the alternative is to copy the elegant-django source code into this template #}
 {% block object-tools %}
     {{ block.super }}
     {% if adminform and adminform.model_admin.elegant_object_actions %}

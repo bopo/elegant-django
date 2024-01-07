@@ -12,7 +12,7 @@ install:
   - pip install -e .
   - pip install -q Django==$DJANGO
 script:
-  - DJANGO_SETTINGS_MODULE=suit.tests.settings django-admin test suit
+  - DJANGO_SETTINGS_MODULE=elegant.tests.settings django-admin test tests
 matrix:
   exclude:
     - python: 2.7

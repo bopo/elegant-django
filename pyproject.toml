@@ -62,7 +62,6 @@ log_cli = 0
 [tool.commitizen]
 tag_format = "v$version"
 annotated_tag = true
-changelog_file = "HISTORY.md"
 changelog_incremental = true
 update_changelog_on_bump = true
 version_provider = "poetry"

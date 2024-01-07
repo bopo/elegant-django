@@ -4,7 +4,7 @@ from django.db import models
 
 def test_app_label():
     """
-    Since Django 1.7 app_label while running tests is "suit"
+    Since Django 1.7 app_label while running tests is "elegant-django"
     instead of "tests" in Django < 1.7
     """
     try:

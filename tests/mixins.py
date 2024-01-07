@@ -54,7 +54,7 @@ class ModelsTestCaseMixin(TestCase):
     def _pre_setup(self):
         self.saved_INSTALLED_APPS = settings.INSTALLED_APPS
         self.saved_DEBUG = settings.DEBUG
-        test_app = 'suit.tests'
+        test_app = 'tests'
         settings.INSTALLED_APPS = tuple(
             list(self.saved_INSTALLED_APPS) + [test_app]
         )
