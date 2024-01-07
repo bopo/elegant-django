@@ -1,61 +1,37 @@
-# Django Suit
+# Elegant Django
 
-**Modern theme for Django admin interface**.
+**针对 Django 管理界面的现代主题**
 
-Django Suit is alternative theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
+Elegant Django 是 [Django](http://www.djangoproject.com) 管理界面的替代主题/皮肤/扩展。
 
-* Project home: http://djangosuit.com/
-* Live demo v1: http://djangosuit.com/admin/
-* Live demo v2.0 alpha 1: http://v2.djangosuit.com/admin/
+* 项目主页：https://github.com/bopo/elegant-django
+* 在线演示：http://djangosuit.com/admin/
 
+## 许可
 
-## License
+* Elegant Django 在 [Creative Commons Attribution-NonCommercial 3.0](https://creativecommons.org/licenses/by-nc/3.0/deed.zh-hans) 许可下发布。
+* 许可和定价：http://djangosuit.com/pricing/
 
-* Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
-* Licence and pricing: http://djangosuit.com/pricing/
+## 文档和支持
 
+* 文档：http://django-suit.readthedocs.org/en/latest/
+* 支持：http://djangosuit.com/support/
+* 关注 [Twitter](http://twitter.com/DjangoSuit) 获取最新消息
 
-## Docs & Support
+## 更新日志
 
-* Documentation v2: http://django-suit.readthedocs.org/en/v2/
-* Documentation v1: http://django-suit.readthedocs.org/en/latest/
-* Support: http://djangosuit.com/support/
-* Follow `on Twitter <http://twitter.com/DjangoSuit>`_ to get latest news
+**注意：** Elegant Django v2.0 正在积极开发中，尚不适合生产环境使用。
+更多详情：Todo: 添加问题引用
 
+## 贡献
 
-## Changelog
+查看 [贡献文档](http://django-suit.readthedocs.org/en/v2/contribute.html)
 
+## 构建状态
 
-**Note:** Django Suit v2.0 is in active development and not yet ready for production use.
-
-Read more here: Todo: Add issue refernce
-
-
-## Contributing
-
-See `Contributing documentation <http://django-suit.readthedocs.org/en/v2/contribute.html>`_
+Elegant Django 使用 Travis CI 对不同版本的 Django 和 Python 进行测试。
+使用 Python：2.7-3.4 和 PyPy。Django：1.9+ 和 Elegant Django v2.0 alpha：
 
 
-## Build Status
+## 预览
 
-Django Suit uses Travis CI to perform tests on different Django and Python versions.
-
-Tested using Python: 2.7-3.4 and PyPy. Django: 1.9+ and Django Suit v2.0 alpha:
-
-.. |v2| image:: https://travis-ci.org/darklow/django-suit.png?branch=v2
-   :alt: Build Status - v2 branch
-   :target: http://travis-ci.org/darklow/django-suit
-
-.. |develop| image:: https://travis-ci.org/darklow/django-suit.png?branch=develop
-   :alt: Build Status - develop branch
-   :target: http://travis-ci.org/darklow/django-suit
-
-|v2| |develop|
-
-
-## Preview
-
-
-.. image:: https://cloud.githubusercontent.com/assets/445304/12699480/3eee898e-c7c5-11e5-931c-ba1b0cabdecb.png
-:alt: Django Suit Preview
-   :target: http://v2.djangosuit.com/admin/
