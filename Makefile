@@ -103,7 +103,7 @@ pull:
 	git pull origin `git symbolic-ref --short -q HEAD` --tags
 	git pull github `git symbolic-ref --short -q HEAD` --tags
 
-sync: pull
+sync: pull ## 同步代码仓库
 	git push origin `git symbolic-ref --short -q HEAD` --tags
 	git push github `git symbolic-ref --short -q HEAD` --tags
 
