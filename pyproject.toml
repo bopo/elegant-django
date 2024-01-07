@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "elegant-django"
-version = "0.1.0"
+version = "0.1.1"
 description = 'Modern theme for Django admin interface.'
 authors = ["bopo <ibopo@126.com>"]
 readme = "README.md"
