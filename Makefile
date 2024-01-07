@@ -99,6 +99,14 @@ dist: clean
 	poetry build
 	ls -lh dist
 
+pull:
+	git pull origin `git symbolic-ref --short -q HEAD` --tags
+	git pull github `git symbolic-ref --short -q HEAD` --tags
+
+sync: pull
+	git push origin `git symbolic-ref --short -q HEAD` --tags
+	git push github `git symbolic-ref --short -q HEAD` --tags
+
 lint:
 	ruff check ./elegant
 
